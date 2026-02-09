@@ -1,0 +1,85 @@
+module Cloudpayments
+  module Models
+    type pet =
+      {
+        name: String,
+        photo_urls: ::Array[String],
+        id: Integer,
+        category: Cloudpayments::Category,
+        status: Cloudpayments::Models::Pet::status,
+        tags: ::Array[Cloudpayments::Pet::Tag]
+      }
+
+    class Pet < Cloudpayments::Internal::Type::BaseModel
+      attr_accessor name: String
+
+      attr_accessor photo_urls: ::Array[String]
+
+      attr_reader id: Integer?
+
+      def id=: (Integer) -> Integer
+
+      attr_reader category: Cloudpayments::Category?
+
+      def category=: (Cloudpayments::Category) -> Cloudpayments::Category
+
+      attr_reader status: Cloudpayments::Models::Pet::status?
+
+      def status=: (
+        Cloudpayments::Models::Pet::status
+      ) -> Cloudpayments::Models::Pet::status
+
+      attr_reader tags: ::Array[Cloudpayments::Pet::Tag]?
+
+      def tags=: (
+        ::Array[Cloudpayments::Pet::Tag]
+      ) -> ::Array[Cloudpayments::Pet::Tag]
+
+      def initialize: (
+        name: String,
+        photo_urls: ::Array[String],
+        ?id: Integer,
+        ?category: Cloudpayments::Category,
+        ?status: Cloudpayments::Models::Pet::status,
+        ?tags: ::Array[Cloudpayments::Pet::Tag]
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        photo_urls: ::Array[String],
+        id: Integer,
+        category: Cloudpayments::Category,
+        status: Cloudpayments::Models::Pet::status,
+        tags: ::Array[Cloudpayments::Pet::Tag]
+      }
+
+      type status = :available | :pending | :sold
+
+      module Status
+        extend Cloudpayments::Internal::Type::Enum
+
+        AVAILABLE: :available
+        PENDING: :pending
+        SOLD: :sold
+
+        def self?.values: -> ::Array[Cloudpayments::Models::Pet::status]
+      end
+
+      type tag = { id: Integer, name: String }
+
+      class Tag < Cloudpayments::Internal::Type::BaseModel
+        attr_reader id: Integer?
+
+        def id=: (Integer) -> Integer
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        def initialize: (?id: Integer, ?name: String) -> void
+
+        def to_hash: -> { id: Integer, name: String }
+      end
+    end
+  end
+end

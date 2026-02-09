@@ -1,0 +1,15 @@
+module Cloudpayments
+  module Models
+    type user_create_params =
+      {  } & Cloudpayments::Internal::Type::request_parameters
+
+    class UserCreateParams < Cloudpayments::Models::User
+      extend Cloudpayments::Internal::Type::RequestParameters::Converter
+      include Cloudpayments::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: Cloudpayments::request_opts) -> void
+
+      def to_hash: -> { request_options: Cloudpayments::RequestOptions }
+    end
+  end
+end

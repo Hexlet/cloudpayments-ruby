@@ -1,0 +1,26 @@
+module Cloudpayments
+  module Models
+    type user_create_with_list_params =
+      { items: ::Array[Cloudpayments::User] }
+      & Cloudpayments::Internal::Type::request_parameters
+
+    class UserCreateWithListParams < Cloudpayments::Internal::Type::BaseModel
+      extend Cloudpayments::Internal::Type::RequestParameters::Converter
+      include Cloudpayments::Internal::Type::RequestParameters
+
+      attr_reader items: ::Array[Cloudpayments::User]?
+
+      def items=: (::Array[Cloudpayments::User]) -> ::Array[Cloudpayments::User]
+
+      def initialize: (
+        ?items: ::Array[Cloudpayments::User],
+        ?request_options: Cloudpayments::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        items: ::Array[Cloudpayments::User],
+        request_options: Cloudpayments::RequestOptions
+      }
+    end
+  end
+end

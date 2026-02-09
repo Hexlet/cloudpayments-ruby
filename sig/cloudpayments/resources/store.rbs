@@ -1,0 +1,13 @@
+module Cloudpayments
+  module Resources
+    class Store
+      attr_reader orders: Cloudpayments::Resources::Store::Orders
+
+      def list_inventory: (
+        ?request_options: Cloudpayments::request_opts
+      ) -> Cloudpayments::Models::store_list_inventory_response
+
+      def initialize: (client: Cloudpayments::Client) -> void
+    end
+  end
+end
