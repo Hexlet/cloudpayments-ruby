@@ -1,0 +1,3 @@
+module Cloudpayments
+  VERSION: String
+end

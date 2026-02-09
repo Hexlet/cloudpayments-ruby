@@ -1,0 +1,71 @@
+module Cloudpayments
+  module Models
+    type order =
+      {
+        id: Integer,
+        complete: bool,
+        pet_id: Integer,
+        quantity: Integer,
+        ship_date: Time,
+        status: Cloudpayments::Models::Order::status
+      }
+
+    class Order < Cloudpayments::Internal::Type::BaseModel
+      attr_reader id: Integer?
+
+      def id=: (Integer) -> Integer
+
+      attr_reader complete: bool?
+
+      def complete=: (bool) -> bool
+
+      attr_reader pet_id: Integer?
+
+      def pet_id=: (Integer) -> Integer
+
+      attr_reader quantity: Integer?
+
+      def quantity=: (Integer) -> Integer
+
+      attr_reader ship_date: Time?
+
+      def ship_date=: (Time) -> Time
+
+      attr_reader status: Cloudpayments::Models::Order::status?
+
+      def status=: (
+        Cloudpayments::Models::Order::status
+      ) -> Cloudpayments::Models::Order::status
+
+      def initialize: (
+        ?id: Integer,
+        ?complete: bool,
+        ?pet_id: Integer,
+        ?quantity: Integer,
+        ?ship_date: Time,
+        ?status: Cloudpayments::Models::Order::status
+      ) -> void
+
+      def to_hash: -> {
+        id: Integer,
+        complete: bool,
+        pet_id: Integer,
+        quantity: Integer,
+        ship_date: Time,
+        status: Cloudpayments::Models::Order::status
+      }
+
+      type status = :placed | :approved | :delivered
+
+      module Status
+        extend Cloudpayments::Internal::Type::Enum
+
+        PLACED: :placed
+        APPROVED: :approved
+        DELIVERED: :delivered
+
+        def self?.values: -> ::Array[Cloudpayments::Models::Order::status]
+      end
+    end
+  end
+end

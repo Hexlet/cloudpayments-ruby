@@ -1,0 +1,7 @@
+module Cloudpayments
+  module Models
+    type pet_find_by_tags_response = ::Array[Cloudpayments::Pet]
+
+    PetFindByTagsResponse: Cloudpayments::Internal::Type::Converter
+  end
+end

@@ -1,0 +1,43 @@
+module Cloudpayments
+  class Category = Cloudpayments::Models::Category
+
+  class Order = Cloudpayments::Models::Order
+
+  class Pet = Cloudpayments::Models::Pet
+
+  class PetCreateParams = Cloudpayments::Models::PetCreateParams
+
+  class PetDeleteParams = Cloudpayments::Models::PetDeleteParams
+
+  class PetFindByStatusParams = Cloudpayments::Models::PetFindByStatusParams
+
+  class PetFindByTagsParams = Cloudpayments::Models::PetFindByTagsParams
+
+  class PetRetrieveParams = Cloudpayments::Models::PetRetrieveParams
+
+  class PetUpdateByIDParams = Cloudpayments::Models::PetUpdateByIDParams
+
+  class PetUpdateParams = Cloudpayments::Models::PetUpdateParams
+
+  class PetUploadImageParams = Cloudpayments::Models::PetUploadImageParams
+
+  module Store = Cloudpayments::Models::Store
+
+  class StoreListInventoryParams = Cloudpayments::Models::StoreListInventoryParams
+
+  class User = Cloudpayments::Models::User
+
+  class UserCreateParams = Cloudpayments::Models::UserCreateParams
+
+  class UserCreateWithListParams = Cloudpayments::Models::UserCreateWithListParams
+
+  class UserDeleteParams = Cloudpayments::Models::UserDeleteParams
+
+  class UserLoginParams = Cloudpayments::Models::UserLoginParams
+
+  class UserLogoutParams = Cloudpayments::Models::UserLogoutParams
+
+  class UserRetrieveParams = Cloudpayments::Models::UserRetrieveParams
+
+  class UserUpdateParams = Cloudpayments::Models::UserUpdateParams
+end

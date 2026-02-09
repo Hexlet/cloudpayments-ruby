@@ -1,0 +1,32 @@
+module Cloudpayments
+  module Models
+    type pet_update_by_id_params =
+      { name: String, status: String }
+      & Cloudpayments::Internal::Type::request_parameters
+
+    class PetUpdateByIDParams < Cloudpayments::Internal::Type::BaseModel
+      extend Cloudpayments::Internal::Type::RequestParameters::Converter
+      include Cloudpayments::Internal::Type::RequestParameters
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader status: String?
+
+      def status=: (String) -> String
+
+      def initialize: (
+        ?name: String,
+        ?status: String,
+        ?request_options: Cloudpayments::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        status: String,
+        request_options: Cloudpayments::RequestOptions
+      }
+    end
+  end
+end
