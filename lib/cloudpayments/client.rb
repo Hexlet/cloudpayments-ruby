@@ -24,6 +24,9 @@ module Cloudpayments
     # @return [Cloudpayments::Resources::Payments]
     attr_reader :payments
 
+    # @return [Cloudpayments::Resources::Models]
+    attr_reader :models
+
     # Creates and returns a new client for interacting with the API.
     #
     # @param public_id [String, nil] Defaults to `ENV["CLOUDPAYMENTS_PUBLIC_ID"]`
@@ -70,6 +73,7 @@ module Cloudpayments
       )
 
       @payments = Cloudpayments::Resources::Payments.new(client: self)
+      @models = Cloudpayments::Resources::Models.new(client: self)
     end
   end
 end
