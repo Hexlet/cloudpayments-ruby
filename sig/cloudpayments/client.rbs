@@ -14,6 +14,8 @@ module Cloudpayments
 
     attr_reader payments: Cloudpayments::Resources::Payments
 
+    attr_reader models: Cloudpayments::Resources::Models
+
     def initialize: (
       ?public_id: String?,
       ?api_secret: String?,

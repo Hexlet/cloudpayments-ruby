@@ -1,0 +1,7 @@
+module Cloudpayments
+  module Resources
+    class Models
+      def initialize: (client: Cloudpayments::Client) -> void
+    end
+  end
+end

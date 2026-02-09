@@ -19,6 +19,9 @@ module Cloudpayments
     sig { returns(Cloudpayments::Resources::Payments) }
     attr_reader :payments
 
+    sig { returns(Cloudpayments::Resources::Models) }
+    attr_reader :models
+
     # Creates and returns a new client for interacting with the API.
     sig do
       params(
