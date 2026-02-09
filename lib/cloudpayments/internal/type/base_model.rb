@@ -441,11 +441,10 @@ module Cloudpayments
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `order` is a `Cloudpayments::Order`
-        #   order => {
-        #     id: id,
-        #     complete: complete,
-        #     pet_id: pet_id
+        #   # `payment_confirm_response` is a `Cloudpayments::Models::PaymentConfirmResponse`
+        #   payment_confirm_response => {
+        #     success: success,
+        #     message: message
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)

@@ -1,7 +1,0 @@
-module Cloudpayments
-  module Models
-    type store_list_inventory_response = ::Hash[Symbol, Integer]
-
-    StoreListInventoryResponse: Cloudpayments::Internal::Type::Converter
-  end
-end

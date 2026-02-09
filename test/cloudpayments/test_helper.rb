@@ -48,7 +48,11 @@ class Cloudpayments::Test::SingletonClient < Cloudpayments::Client
   TEST_API_BASE_URL = ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010")
 
   def initialize
-    super(base_url: Cloudpayments::Test::SingletonClient::TEST_API_BASE_URL, api_key: "My API Key")
+    super(
+      base_url: Cloudpayments::Test::SingletonClient::TEST_API_BASE_URL,
+      public_id: "My Public ID",
+      api_secret: "My API Secret"
+    )
   end
 end
 
