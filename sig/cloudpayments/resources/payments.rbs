@@ -1,0 +1,68 @@
+module Cloudpayments
+  module Resources
+    class Payments
+      def auth: (
+        amount: Float,
+        card_cryptogram_packet: String,
+        ip_address: String,
+        ?account_id: String,
+        ?culture_name: String,
+        ?currency: String,
+        ?description: String,
+        ?email: String,
+        ?invoice_id: String,
+        ?json_data: top,
+        ?name: String,
+        ?payer: Cloudpayments::PaymentAuthParams::Payer,
+        ?payment_url: String,
+        ?save_card: bool,
+        ?request_options: Cloudpayments::request_opts
+      ) -> Cloudpayments::Models::payment_auth_response
+
+      def charge: (
+        amount: Float,
+        card_cryptogram_packet: String,
+        ip_address: String,
+        ?account_id: String,
+        ?culture_name: String,
+        ?currency: String,
+        ?description: String,
+        ?email: String,
+        ?invoice_id: String,
+        ?json_data: top,
+        ?name: String,
+        ?payer: Cloudpayments::PaymentChargeParams::Payer,
+        ?payment_url: String,
+        ?save_card: bool,
+        ?request_options: Cloudpayments::request_opts
+      ) -> Cloudpayments::Models::payment_charge_response
+
+      def confirm: (
+        amount: Float,
+        transaction_id: Integer,
+        ?json_data: top,
+        ?request_options: Cloudpayments::request_opts
+      ) -> Cloudpayments::Models::PaymentConfirmResponse
+
+      def post3ds: (
+        pa_res: String,
+        transaction_id: Integer,
+        ?request_options: Cloudpayments::request_opts
+      ) -> Cloudpayments::Models::PaymentPost3dsResponse
+
+      def refund: (
+        amount: Float,
+        transaction_id: Integer,
+        ?json_data: top,
+        ?request_options: Cloudpayments::request_opts
+      ) -> Cloudpayments::Models::PaymentRefundResponse
+
+      def `void`: (
+        transaction_id: Integer,
+        ?request_options: Cloudpayments::request_opts
+      ) -> Cloudpayments::Models::PaymentVoidResponse
+
+      def initialize: (client: Cloudpayments::Client) -> void
+    end
+  end
+end

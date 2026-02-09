@@ -16,27 +16,19 @@ module Cloudpayments
     DEFAULT_MAX_RETRY_DELAY = 8.0
 
     # @return [String]
-    attr_reader :api_key
+    attr_reader :public_id
 
-    # @return [Cloudpayments::Resources::Pets]
-    attr_reader :pets
+    # @return [String]
+    attr_reader :api_secret
 
-    # @return [Cloudpayments::Resources::Store]
-    attr_reader :store
-
-    # @return [Cloudpayments::Resources::Users]
-    attr_reader :users
-
-    # @api private
-    #
-    # @return [Hash{String=>String}]
-    private def auth_headers
-      {"api_key" => @api_key}
-    end
+    # @return [Cloudpayments::Resources::Payments]
+    attr_reader :payments
 
     # Creates and returns a new client for interacting with the API.
     #
-    # @param api_key [String, nil] Defaults to `ENV["PETSTORE_API_KEY"]`
+    # @param public_id [String, nil] Defaults to `ENV["CLOUDPAYMENTS_PUBLIC_ID"]`
+    #
+    # @param api_secret [String, nil] Defaults to `ENV["CLOUDPAYMENTS_API_SECRET"]`
     #
     # @param base_url [String, nil] Override the default base URL for the API, e.g.,
     # `"https://api.example.com/v2/"`. Defaults to `ENV["CLOUDPAYMENTS_BASE_URL"]`
@@ -49,20 +41,25 @@ module Cloudpayments
     #
     # @param max_retry_delay [Float]
     def initialize(
-      api_key: ENV["PETSTORE_API_KEY"],
+      public_id: ENV["CLOUDPAYMENTS_PUBLIC_ID"],
+      api_secret: ENV["CLOUDPAYMENTS_API_SECRET"],
       base_url: ENV["CLOUDPAYMENTS_BASE_URL"],
       max_retries: self.class::DEFAULT_MAX_RETRIES,
       timeout: self.class::DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: self.class::DEFAULT_INITIAL_RETRY_DELAY,
       max_retry_delay: self.class::DEFAULT_MAX_RETRY_DELAY
     )
-      base_url ||= "https://petstore3.swagger.io/api/v3"
+      base_url ||= "https://api.cloudpayments.ru"
 
-      if api_key.nil?
-        raise ArgumentError.new("api_key is required, and can be set via environ: \"PETSTORE_API_KEY\"")
+      if public_id.nil?
+        raise ArgumentError.new("public_id is required, and can be set via environ: \"CLOUDPAYMENTS_PUBLIC_ID\"")
+      end
+      if api_secret.nil?
+        raise ArgumentError.new("api_secret is required, and can be set via environ: \"CLOUDPAYMENTS_API_SECRET\"")
       end
 
-      @api_key = api_key.to_s
+      @public_id = public_id.to_s
+      @api_secret = api_secret.to_s
 
       super(
         base_url: base_url,
@@ -72,9 +69,7 @@ module Cloudpayments
         max_retry_delay: max_retry_delay
       )
 
-      @pets = Cloudpayments::Resources::Pets.new(client: self)
-      @store = Cloudpayments::Resources::Store.new(client: self)
-      @users = Cloudpayments::Resources::Users.new(client: self)
+      @payments = Cloudpayments::Resources::Payments.new(client: self)
     end
   end
 end

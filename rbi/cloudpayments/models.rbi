@@ -1,45 +1,15 @@
 # typed: strong
 
 module Cloudpayments
-  Category = Cloudpayments::Models::Category
+  PaymentAuthParams = Cloudpayments::Models::PaymentAuthParams
 
-  Order = Cloudpayments::Models::Order
+  PaymentChargeParams = Cloudpayments::Models::PaymentChargeParams
 
-  Pet = Cloudpayments::Models::Pet
+  PaymentConfirmParams = Cloudpayments::Models::PaymentConfirmParams
 
-  PetCreateParams = Cloudpayments::Models::PetCreateParams
+  PaymentPost3dsParams = Cloudpayments::Models::PaymentPost3dsParams
 
-  PetDeleteParams = Cloudpayments::Models::PetDeleteParams
+  PaymentRefundParams = Cloudpayments::Models::PaymentRefundParams
 
-  PetFindByStatusParams = Cloudpayments::Models::PetFindByStatusParams
-
-  PetFindByTagsParams = Cloudpayments::Models::PetFindByTagsParams
-
-  PetRetrieveParams = Cloudpayments::Models::PetRetrieveParams
-
-  PetUpdateByIDParams = Cloudpayments::Models::PetUpdateByIDParams
-
-  PetUpdateParams = Cloudpayments::Models::PetUpdateParams
-
-  PetUploadImageParams = Cloudpayments::Models::PetUploadImageParams
-
-  Store = Cloudpayments::Models::Store
-
-  StoreListInventoryParams = Cloudpayments::Models::StoreListInventoryParams
-
-  User = Cloudpayments::Models::User
-
-  UserCreateParams = Cloudpayments::Models::UserCreateParams
-
-  UserCreateWithListParams = Cloudpayments::Models::UserCreateWithListParams
-
-  UserDeleteParams = Cloudpayments::Models::UserDeleteParams
-
-  UserLoginParams = Cloudpayments::Models::UserLoginParams
-
-  UserLogoutParams = Cloudpayments::Models::UserLogoutParams
-
-  UserRetrieveParams = Cloudpayments::Models::UserRetrieveParams
-
-  UserUpdateParams = Cloudpayments::Models::UserUpdateParams
+  PaymentVoidParams = Cloudpayments::Models::PaymentVoidParams
 end

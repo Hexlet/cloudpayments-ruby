@@ -1,5 +1,0 @@
-module Cloudpayments
-  module Models
-    class UserLoginResponse = String
-  end
-end

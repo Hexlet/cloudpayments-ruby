@@ -4,6 +4,17 @@ module Cloudpayments
   module Internal
     module Type
       # @api private
+      #
+      # @example
+      #   # `payment_auth_response` is a `Cloudpayments::Models::PaymentAuthResponse`
+      #   case payment_auth_response
+      #   when Cloudpayments::Models::PaymentAuthResponse::UnionMember0
+      #     puts(payment_auth_response.success)
+      #   when Cloudpayments::Models::PaymentAuthResponse::UnionMember1
+      #     puts(payment_auth_response.message)
+      #   else
+      #     puts(payment_auth_response)
+      #   end
       module Union
         include Cloudpayments::Internal::Type::Converter
         include Cloudpayments::Internal::Util::SorbetRuntimeSupport

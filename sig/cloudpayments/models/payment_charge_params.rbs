@@ -1,0 +1,197 @@
+module Cloudpayments
+  module Models
+    type payment_charge_params =
+      {
+        amount: Float,
+        card_cryptogram_packet: String,
+        ip_address: String,
+        account_id: String,
+        culture_name: String,
+        currency: String,
+        description: String,
+        email: String,
+        invoice_id: String,
+        json_data: top,
+        name: String,
+        payer: Cloudpayments::PaymentChargeParams::Payer,
+        payment_url: String,
+        save_card: bool
+      }
+      & Cloudpayments::Internal::Type::request_parameters
+
+    class PaymentChargeParams < Cloudpayments::Internal::Type::BaseModel
+      extend Cloudpayments::Internal::Type::RequestParameters::Converter
+      include Cloudpayments::Internal::Type::RequestParameters
+
+      attr_accessor amount: Float
+
+      attr_accessor card_cryptogram_packet: String
+
+      attr_accessor ip_address: String
+
+      attr_reader account_id: String?
+
+      def account_id=: (String) -> String
+
+      attr_reader culture_name: String?
+
+      def culture_name=: (String) -> String
+
+      attr_reader currency: String?
+
+      def currency=: (String) -> String
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader invoice_id: String?
+
+      def invoice_id=: (String) -> String
+
+      attr_reader json_data: top?
+
+      def json_data=: (top) -> top
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader payer: Cloudpayments::PaymentChargeParams::Payer?
+
+      def payer=: (
+        Cloudpayments::PaymentChargeParams::Payer
+      ) -> Cloudpayments::PaymentChargeParams::Payer
+
+      attr_reader payment_url: String?
+
+      def payment_url=: (String) -> String
+
+      attr_reader save_card: bool?
+
+      def save_card=: (bool) -> bool
+
+      def initialize: (
+        amount: Float,
+        card_cryptogram_packet: String,
+        ip_address: String,
+        ?account_id: String,
+        ?culture_name: String,
+        ?currency: String,
+        ?description: String,
+        ?email: String,
+        ?invoice_id: String,
+        ?json_data: top,
+        ?name: String,
+        ?payer: Cloudpayments::PaymentChargeParams::Payer,
+        ?payment_url: String,
+        ?save_card: bool,
+        ?request_options: Cloudpayments::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        amount: Float,
+        card_cryptogram_packet: String,
+        ip_address: String,
+        account_id: String,
+        culture_name: String,
+        currency: String,
+        description: String,
+        email: String,
+        invoice_id: String,
+        json_data: top,
+        name: String,
+        payer: Cloudpayments::PaymentChargeParams::Payer,
+        payment_url: String,
+        save_card: bool,
+        request_options: Cloudpayments::RequestOptions
+      }
+
+      type payer =
+        {
+          address: String,
+          birth: String,
+          city: String,
+          country: String,
+          first_name: String,
+          last_name: String,
+          middle_name: String,
+          phone: String,
+          postcode: String,
+          street: String
+        }
+
+      class Payer < Cloudpayments::Internal::Type::BaseModel
+        attr_reader address: String?
+
+        def address=: (String) -> String
+
+        attr_reader birth: String?
+
+        def birth=: (String) -> String
+
+        attr_reader city: String?
+
+        def city=: (String) -> String
+
+        attr_reader country: String?
+
+        def country=: (String) -> String
+
+        attr_reader first_name: String?
+
+        def first_name=: (String) -> String
+
+        attr_reader last_name: String?
+
+        def last_name=: (String) -> String
+
+        attr_reader middle_name: String?
+
+        def middle_name=: (String) -> String
+
+        attr_reader phone: String?
+
+        def phone=: (String) -> String
+
+        attr_reader postcode: String?
+
+        def postcode=: (String) -> String
+
+        attr_reader street: String?
+
+        def street=: (String) -> String
+
+        def initialize: (
+          ?address: String,
+          ?birth: String,
+          ?city: String,
+          ?country: String,
+          ?first_name: String,
+          ?last_name: String,
+          ?middle_name: String,
+          ?phone: String,
+          ?postcode: String,
+          ?street: String
+        ) -> void
+
+        def to_hash: -> {
+          address: String,
+          birth: String,
+          city: String,
+          country: String,
+          first_name: String,
+          last_name: String,
+          middle_name: String,
+          phone: String,
+          postcode: String,
+          street: String
+        }
+      end
+    end
+  end
+end

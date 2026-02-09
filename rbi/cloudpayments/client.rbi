@@ -11,26 +11,19 @@ module Cloudpayments
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
     sig { returns(String) }
-    attr_reader :api_key
+    attr_reader :public_id
 
-    sig { returns(Cloudpayments::Resources::Pets) }
-    attr_reader :pets
+    sig { returns(String) }
+    attr_reader :api_secret
 
-    sig { returns(Cloudpayments::Resources::Store) }
-    attr_reader :store
-
-    sig { returns(Cloudpayments::Resources::Users) }
-    attr_reader :users
-
-    # @api private
-    sig { override.returns(T::Hash[String, String]) }
-    private def auth_headers
-    end
+    sig { returns(Cloudpayments::Resources::Payments) }
+    attr_reader :payments
 
     # Creates and returns a new client for interacting with the API.
     sig do
       params(
-        api_key: T.nilable(String),
+        public_id: T.nilable(String),
+        api_secret: T.nilable(String),
         base_url: T.nilable(String),
         max_retries: Integer,
         timeout: Float,
@@ -39,8 +32,10 @@ module Cloudpayments
       ).returns(T.attached_class)
     end
     def self.new(
-      # Defaults to `ENV["PETSTORE_API_KEY"]`
-      api_key: ENV["PETSTORE_API_KEY"],
+      # Defaults to `ENV["CLOUDPAYMENTS_PUBLIC_ID"]`
+      public_id: ENV["CLOUDPAYMENTS_PUBLIC_ID"],
+      # Defaults to `ENV["CLOUDPAYMENTS_API_SECRET"]`
+      api_secret: ENV["CLOUDPAYMENTS_API_SECRET"],
       # Override the default base URL for the API, e.g.,
       # `"https://api.example.com/v2/"`. Defaults to `ENV["CLOUDPAYMENTS_BASE_URL"]`
       base_url: ENV["CLOUDPAYMENTS_BASE_URL"],
