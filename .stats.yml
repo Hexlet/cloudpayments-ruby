@@ -1,4 +1,4 @@
 configured_endpoints: 6
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/hexlet%2Fcloudpayments-4a7c87f457029686206224a4785cd5e539dd42d905f84a68dbd440f24b3ba055.yml
-openapi_spec_hash: ce4157583083d05eaf8e5ec45216c112
-config_hash: d26a7d37520b517e14ffae7f7ab0119b
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/hexlet%2Fcloudpayments-bfd20159e37ef2468e956064918f7b861d53095aadf70ca3cb440414ff140874.yml
+openapi_spec_hash: e9d4e5205df182bde226c51e156fc38d
+config_hash: 7669258168adc5ef60b57841c723d333
