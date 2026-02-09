@@ -43,13 +43,13 @@ If you’d like to use the repository from source, you can either install from g
 To install via git in your `Gemfile`:
 
 ```ruby
-gem "cloudpayments", git: "https://github.com/stainless-sdks/cloudpayments-ruby"
+gem "cloudpayments", git: "https://github.com/Hexlet/cloudpayments-ruby"
 ```
 
 Alternatively, reference local copy of the repo:
 
 ```bash
-$ git clone -- 'https://github.com/stainless-sdks/cloudpayments-ruby' '<path-to-repo>'
+$ git clone -- 'https://github.com/Hexlet/cloudpayments-ruby' '<path-to-repo>'
 ```
 
 ```ruby
