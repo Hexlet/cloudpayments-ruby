@@ -15,7 +15,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "cloudpayments", "~> 0.0.2"
+gem "cloudpayments", "~> 0.1.0"
 ```
 
 <!-- x-release-please-end -->
@@ -26,13 +26,17 @@ gem "cloudpayments", "~> 0.0.2"
 require "bundler/setup"
 require "cloudpayments"
 
-cloudpayments = Cloudpayments::Client.new(
-  api_key: ENV["PETSTORE_API_KEY"] # This is the default and can be omitted
+cloudpayments = Cloudpayments::Client.new(public_id: "My Public ID", api_secret: "My API Secret")
+
+response = cloudpayments.payments.charge(
+  amount: 100,
+  card_cryptogram_packet: "cryptogram_data",
+  ip_address: "127.0.0.1",
+  currency: "RUB",
+  description: "Оплата заказа"
 )
 
-order = cloudpayments.store.orders.create(pet_id: 1, quantity: 1, status: "placed")
-
-puts(order.id)
+puts(response)
 ```
 
 ### Handling errors
@@ -41,7 +45,12 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  store = cloudpayments.store.list_inventory
+  payment = cloudpayments.payments.charge(
+    amount: 100,
+    card_cryptogram_packet: "cryptogram_data",
+    ip_address: "127.0.0.1",
+    currency: "RUB"
+  )
 rescue Cloudpayments::Errors::APIConnectionError => e
   puts("The server could not be reached")
   puts(e.cause)  # an underlying Exception, likely raised within `net/http`
@@ -80,11 +89,19 @@ You can use the `max_retries` option to configure or disable this:
 ```ruby
 # Configure the default for all requests:
 cloudpayments = Cloudpayments::Client.new(
-  max_retries: 0 # default is 2
+  max_retries: 0, # default is 2
+  public_id: "My Public ID",
+  api_secret: "My API Secret"
 )
 
 # Or, configure per-request:
-cloudpayments.store.list_inventory(request_options: {max_retries: 5})
+cloudpayments.payments.charge(
+  amount: 100,
+  card_cryptogram_packet: "cryptogram_data",
+  ip_address: "127.0.0.1",
+  currency: "RUB",
+  request_options: {max_retries: 5}
+)
 ```
 
 ### Timeouts
@@ -94,11 +111,19 @@ By default, requests will time out after 60 seconds. You can use the timeout opt
 ```ruby
 # Configure the default for all requests:
 cloudpayments = Cloudpayments::Client.new(
-  timeout: nil # default is 60
+  timeout: nil, # default is 60
+  public_id: "My Public ID",
+  api_secret: "My API Secret"
 )
 
 # Or, configure per-request:
-cloudpayments.store.list_inventory(request_options: {timeout: 5})
+cloudpayments.payments.charge(
+  amount: 100,
+  card_cryptogram_packet: "cryptogram_data",
+  ip_address: "127.0.0.1",
+  currency: "RUB",
+  request_options: {timeout: 5}
+)
 ```
 
 On timeout, `Cloudpayments::Errors::APITimeoutError` is raised.
@@ -129,7 +154,11 @@ Note: the `extra_` parameters of the same name overrides the documented paramete
 
 ```ruby
 response =
-  cloudpayments.store.list_inventory(
+  cloudpayments.payments.charge(
+    amount: 100,
+    card_cryptogram_packet: "cryptogram_data",
+    ip_address: "127.0.0.1",
+    currency: "RUB",
     request_options: {
       extra_query: {my_query_parameter: value},
       extra_body: {my_body_parameter: value},
@@ -175,46 +204,36 @@ This library provides comprehensive [RBI](https://sorbet.org/docs/rbi) definitio
 You can provide typesafe request parameters like so:
 
 ```ruby
-cloudpayments.store.orders.create(pet_id: 1, quantity: 1, status: "placed")
+cloudpayments.payments.charge(
+  amount: 100,
+  card_cryptogram_packet: "cryptogram_data",
+  ip_address: "127.0.0.1",
+  currency: "RUB",
+  description: "Оплата заказа"
+)
 ```
 
 Or, equivalently:
 
 ```ruby
 # Hashes work, but are not typesafe:
-cloudpayments.store.orders.create(pet_id: 1, quantity: 1, status: "placed")
+cloudpayments.payments.charge(
+  amount: 100,
+  card_cryptogram_packet: "cryptogram_data",
+  ip_address: "127.0.0.1",
+  currency: "RUB",
+  description: "Оплата заказа"
+)
 
 # You can also splat a full Params class:
-params = Cloudpayments::Store::OrderCreateParams.new(pet_id: 1, quantity: 1, status: "placed")
-cloudpayments.store.orders.create(**params)
-```
-
-### Enums
-
-Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
-
-```ruby
-# :available
-puts(Cloudpayments::Pet::Status::AVAILABLE)
-
-# Revealed type: `T.all(Cloudpayments::Pet::Status, Symbol)`
-T.reveal_type(Cloudpayments::Pet::Status::AVAILABLE)
-```
-
-Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
-
-```ruby
-# Using the enum constants preserves the tagged type information:
-cloudpayments.pets.create(
-  status: Cloudpayments::Pet::Status::AVAILABLE,
-  # …
+params = Cloudpayments::PaymentChargeParams.new(
+  amount: 100,
+  card_cryptogram_packet: "cryptogram_data",
+  ip_address: "127.0.0.1",
+  currency: "RUB",
+  description: "Оплата заказа"
 )
-
-# Literal values are also permissible:
-cloudpayments.pets.create(
-  status: :available,
-  # …
-)
+cloudpayments.payments.charge(**params)
 ```
 
 ## Versioning
