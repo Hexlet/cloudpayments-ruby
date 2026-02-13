@@ -1,0 +1,17 @@
+module CloudpaymentsRuby
+  module Models
+    type payment_confirm_response = { success: bool, message: String }
+
+    class PaymentConfirmResponse < CloudpaymentsRuby::Internal::Type::BaseModel
+      attr_accessor success: bool
+
+      attr_reader message: String?
+
+      def message=: (String) -> String
+
+      def initialize: (success: bool, ?message: String) -> void
+
+      def to_hash: -> { success: bool, message: String }
+    end
+  end
+end

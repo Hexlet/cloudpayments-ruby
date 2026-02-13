@@ -1,0 +1,33 @@
+module CloudpaymentsRuby
+  module Resources
+    class Orders
+      def create: (
+        amount: Float,
+        description: String,
+        ?account_id: String,
+        ?culture_name: String,
+        ?currency: String,
+        ?email: String,
+        ?fail_redirect_url: String,
+        ?invoice_id: String,
+        ?json_data: top,
+        ?offer_uri: String,
+        ?phone: String,
+        ?require_confirmation: bool,
+        ?send_email: bool,
+        ?send_sms: bool,
+        ?send_viber: bool,
+        ?subscription_behavior: String,
+        ?success_redirect_url: String,
+        ?request_options: CloudpaymentsRuby::request_opts
+      ) -> CloudpaymentsRuby::Models::OrderCreateResponse
+
+      def cancel: (
+        id: String,
+        ?request_options: CloudpaymentsRuby::request_opts
+      ) -> CloudpaymentsRuby::Models::OrderCancelResponse
+
+      def initialize: (client: CloudpaymentsRuby::Client) -> void
+    end
+  end
+end

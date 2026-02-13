@@ -40,9 +40,9 @@ Layout/LineLength:
   AllowedPatterns:
     - "^\\s*#.*$"
     - ^require(_relative)?
-    - "Cloudpayments::Internal::Type::BaseModel$"
+    - "CloudpaymentsRuby::Internal::Type::BaseModel$"
     - "^\\s*[A-Z0-9_]+ = :"
-    - "Cloudpayments::(Models|Resources|Test)::"
+    - "CloudpaymentsRuby::(Models|Resources|Test)::"
   Max: 110
 
 Layout/MultilineArrayLineBreaks:

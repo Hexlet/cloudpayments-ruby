@@ -1,0 +1,23 @@
+module CloudpaymentsRuby
+  module Models
+    type subscription_get_params =
+      { id: String } & CloudpaymentsRuby::Internal::Type::request_parameters
+
+    class SubscriptionGetParams < CloudpaymentsRuby::Internal::Type::BaseModel
+      extend CloudpaymentsRuby::Internal::Type::RequestParameters::Converter
+      include CloudpaymentsRuby::Internal::Type::RequestParameters
+
+      attr_accessor id: String
+
+      def initialize: (
+        id: String,
+        ?request_options: CloudpaymentsRuby::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        request_options: CloudpaymentsRuby::RequestOptions
+      }
+    end
+  end
+end

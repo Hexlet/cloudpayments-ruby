@@ -5,7 +5,7 @@ include:
   - 'Rakefile'
   - 'examples/**/*.rb'
   - 'lib/**/*.rb'
-  - 'test/cloudpayments/resource_namespaces.rb'
-  - 'test/cloudpayments/test_helper.rb'
+  - 'test/cloudpayments_ruby/resource_namespaces.rb'
+  - 'test/cloudpayments_ruby/test_helper.rb'
 exclude:
   - 'rbi/**/*'

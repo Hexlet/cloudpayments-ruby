@@ -1,0 +1,232 @@
+# frozen_string_literal: true
+
+module CloudpaymentsRuby
+  module Resources
+    class Payments
+      # @return [CloudpaymentsRuby::Resources::Payments::Tokens]
+      attr_reader :tokens
+
+      # Двухстадийная оплата по криптограмме
+      #
+      # Выполняет только авторизацию (холдирование средств). Для списания необходимо
+      # вызвать метод confirm. При необходимости 3-D Secure аутентификации возвращает
+      # данные для перенаправления на ACS.
+      #
+      # @overload auth(amount:, card_cryptogram_packet:, ip_address:, account_id: nil, culture_name: nil, currency: nil, description: nil, email: nil, invoice_id: nil, json_data: nil, name: nil, payer: nil, payment_url: nil, save_card: nil, request_options: {})
+      #
+      # @param amount [Float] Сумма платежа (до 2 знаков после точки)
+      #
+      # @param card_cryptogram_packet [String] Криптограмма платежных данных
+      #
+      # @param ip_address [String] IP-адрес плательщика
+      #
+      # @param account_id [String] Идентификатор пользователя
+      #
+      # @param culture_name [String] Язык уведомлений (ru-RU, en-US)
+      #
+      # @param currency [String] Валюта (RUB по умолчанию)
+      #
+      # @param description [String] Описание платежа
+      #
+      # @param email [String] Email плательщика
+      #
+      # @param invoice_id [String] Номер заказа
+      #
+      # @param json_data [Object] Дополнительные данные (JSON)
+      #
+      # @param name [String] Имя держателя карты (латиница)
+      #
+      # @param payer [CloudpaymentsRuby::Models::PaymentAuthParams::Payer] Информация о плательщике
+      #
+      # @param payment_url [String] URL сайта, с которого выполняется оплата
+      #
+      # @param save_card [Boolean] Сохранить токен карты для повторных платежей
+      #
+      # @param request_options [CloudpaymentsRuby::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [CloudpaymentsRuby::Models::PaymentAuthResponse::UnionMember0, CloudpaymentsRuby::Models::PaymentAuthResponse::UnionMember1]
+      #
+      # @see CloudpaymentsRuby::Models::PaymentAuthParams
+      def auth(params)
+        parsed, options = CloudpaymentsRuby::PaymentAuthParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "payments/cards/auth",
+          body: parsed,
+          model: CloudpaymentsRuby::Models::PaymentAuthResponse,
+          options: options
+        )
+      end
+
+      # Одностадийная оплата по криптограмме
+      #
+      # Выполняет оплату в одну стадию - авторизация и списание происходят одновременно.
+      # При необходимости 3-D Secure аутентификации возвращает данные для
+      # перенаправления на ACS.
+      #
+      # @overload charge(amount:, card_cryptogram_packet:, ip_address:, account_id: nil, culture_name: nil, currency: nil, description: nil, email: nil, invoice_id: nil, json_data: nil, name: nil, payer: nil, payment_url: nil, save_card: nil, request_options: {})
+      #
+      # @param amount [Float] Сумма платежа (до 2 знаков после точки)
+      #
+      # @param card_cryptogram_packet [String] Криптограмма платежных данных
+      #
+      # @param ip_address [String] IP-адрес плательщика
+      #
+      # @param account_id [String] Идентификатор пользователя
+      #
+      # @param culture_name [String] Язык уведомлений (ru-RU, en-US)
+      #
+      # @param currency [String] Валюта (RUB по умолчанию)
+      #
+      # @param description [String] Описание платежа
+      #
+      # @param email [String] Email плательщика
+      #
+      # @param invoice_id [String] Номер заказа
+      #
+      # @param json_data [Object] Дополнительные данные (JSON)
+      #
+      # @param name [String] Имя держателя карты (латиница)
+      #
+      # @param payer [CloudpaymentsRuby::Models::PaymentChargeParams::Payer] Информация о плательщике
+      #
+      # @param payment_url [String] URL сайта, с которого выполняется оплата
+      #
+      # @param save_card [Boolean] Сохранить токен карты для повторных платежей
+      #
+      # @param request_options [CloudpaymentsRuby::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [CloudpaymentsRuby::Models::PaymentChargeResponse::UnionMember0, CloudpaymentsRuby::Models::PaymentChargeResponse::UnionMember1]
+      #
+      # @see CloudpaymentsRuby::Models::PaymentChargeParams
+      def charge(params)
+        parsed, options = CloudpaymentsRuby::PaymentChargeParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "payments/cards/charge",
+          body: parsed,
+          model: CloudpaymentsRuby::Models::PaymentChargeResponse,
+          options: options
+        )
+      end
+
+      # Подтверждение двухстадийного платежа
+      #
+      # Подтверждает ранее авторизованный платеж и инициирует списание средств. Сумма
+      # подтверждения может быть меньше или равна сумме авторизации.
+      #
+      # @overload confirm(amount:, transaction_id:, json_data: nil, request_options: {})
+      #
+      # @param amount [Float] Сумма подтверждения
+      #
+      # @param transaction_id [Integer] ID транзакции
+      #
+      # @param json_data [Object] Дополнительные данные (JSON)
+      #
+      # @param request_options [CloudpaymentsRuby::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [CloudpaymentsRuby::Models::PaymentConfirmResponse]
+      #
+      # @see CloudpaymentsRuby::Models::PaymentConfirmParams
+      def confirm(params)
+        parsed, options = CloudpaymentsRuby::PaymentConfirmParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "payments/confirm",
+          body: parsed,
+          model: CloudpaymentsRuby::Models::PaymentConfirmResponse,
+          options: options
+        )
+      end
+
+      # Завершение 3-D Secure аутентификации
+      #
+      # Вызывается после возврата плательщика с ACS. Параметр TransactionId
+      # соответствует MD, PaRes получается от ACS.
+      #
+      # @overload post3ds(pa_res:, transaction_id:, request_options: {})
+      #
+      # @param pa_res [String] Результат 3-D Secure аутентификации
+      #
+      # @param transaction_id [Integer] ID транзакции (значение параметра MD)
+      #
+      # @param request_options [CloudpaymentsRuby::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [CloudpaymentsRuby::Models::PaymentPost3dsResponse]
+      #
+      # @see CloudpaymentsRuby::Models::PaymentPost3dsParams
+      def post3ds(params)
+        parsed, options = CloudpaymentsRuby::PaymentPost3dsParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "payments/cards/post3ds",
+          body: parsed,
+          model: CloudpaymentsRuby::Models::PaymentPost3dsResponse,
+          options: options
+        )
+      end
+
+      # Возврат средств
+      #
+      # Возвращает средства по завершенному платежу. Сумма возврата может быть меньше
+      # или равна сумме платежа. Возможны частичные возвраты.
+      #
+      # @overload refund(amount:, transaction_id:, json_data: nil, request_options: {})
+      #
+      # @param amount [Float] Сумма возврата
+      #
+      # @param transaction_id [Integer] ID транзакции оплаты
+      #
+      # @param json_data [Object] Дополнительные данные (JSON)
+      #
+      # @param request_options [CloudpaymentsRuby::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [CloudpaymentsRuby::Models::PaymentRefundResponse]
+      #
+      # @see CloudpaymentsRuby::Models::PaymentRefundParams
+      def refund(params)
+        parsed, options = CloudpaymentsRuby::PaymentRefundParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "payments/refund",
+          body: parsed,
+          model: CloudpaymentsRuby::Models::PaymentRefundResponse,
+          options: options
+        )
+      end
+
+      # Отмена платежа
+      #
+      # Отменяет авторизованный платеж до его подтверждения. Применимо только для
+      # двухстадийных платежей.
+      #
+      # @overload void(transaction_id:, request_options: {})
+      #
+      # @param transaction_id [Integer] ID транзакции
+      #
+      # @param request_options [CloudpaymentsRuby::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [CloudpaymentsRuby::Models::PaymentVoidResponse]
+      #
+      # @see CloudpaymentsRuby::Models::PaymentVoidParams
+      def void(params)
+        parsed, options = CloudpaymentsRuby::PaymentVoidParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "payments/void",
+          body: parsed,
+          model: CloudpaymentsRuby::Models::PaymentVoidResponse,
+          options: options
+        )
+      end
+
+      # @api private
+      #
+      # @param client [CloudpaymentsRuby::Client]
+      def initialize(client:)
+        @client = client
+        @tokens = CloudpaymentsRuby::Resources::Payments::Tokens.new(client: client)
+      end
+    end
+  end
+end
