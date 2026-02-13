@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1 (2026-02-13)
+
+Full Changelog: [v0.4.0...v0.4.1](https://github.com/Hexlet/cloudpayments-ruby/compare/v0.4.0...v0.4.1)
+
+### Chores
+
+* update SDK settings ([4a56bb5](https://github.com/Hexlet/cloudpayments-ruby/commit/4a56bb55611dc46b6ab1e1abadca6aa4658834a6))
+
 ## 0.4.0 (2026-02-13)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/Hexlet/cloudpayments-ruby/compare/v0.3.0...v0.4.0)
