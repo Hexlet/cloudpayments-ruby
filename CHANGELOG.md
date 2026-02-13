@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 (2026-02-13)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/Hexlet/cloudpayments-ruby/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** api update ([8d76133](https://github.com/Hexlet/cloudpayments-ruby/commit/8d761333614b35627866cbde867228f1713e285c))
+
 ## 0.2.0 (2026-02-09)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/Hexlet/cloudpayments-ruby/compare/v0.1.0...v0.2.0)

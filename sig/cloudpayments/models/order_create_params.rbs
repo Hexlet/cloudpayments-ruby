@@ -1,0 +1,136 @@
+module Cloudpayments
+  module Models
+    type order_create_params =
+      {
+        amount: Float,
+        description: String,
+        account_id: String,
+        culture_name: String,
+        currency: String,
+        email: String,
+        fail_redirect_url: String,
+        invoice_id: String,
+        json_data: top,
+        offer_uri: String,
+        phone: String,
+        require_confirmation: bool,
+        send_email: bool,
+        send_sms: bool,
+        send_viber: bool,
+        subscription_behavior: String,
+        success_redirect_url: String
+      }
+      & Cloudpayments::Internal::Type::request_parameters
+
+    class OrderCreateParams < Cloudpayments::Internal::Type::BaseModel
+      extend Cloudpayments::Internal::Type::RequestParameters::Converter
+      include Cloudpayments::Internal::Type::RequestParameters
+
+      attr_accessor amount: Float
+
+      attr_accessor description: String
+
+      attr_reader account_id: String?
+
+      def account_id=: (String) -> String
+
+      attr_reader culture_name: String?
+
+      def culture_name=: (String) -> String
+
+      attr_reader currency: String?
+
+      def currency=: (String) -> String
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader fail_redirect_url: String?
+
+      def fail_redirect_url=: (String) -> String
+
+      attr_reader invoice_id: String?
+
+      def invoice_id=: (String) -> String
+
+      attr_reader json_data: top?
+
+      def json_data=: (top) -> top
+
+      attr_reader offer_uri: String?
+
+      def offer_uri=: (String) -> String
+
+      attr_reader phone: String?
+
+      def phone=: (String) -> String
+
+      attr_reader require_confirmation: bool?
+
+      def require_confirmation=: (bool) -> bool
+
+      attr_reader send_email: bool?
+
+      def send_email=: (bool) -> bool
+
+      attr_reader send_sms: bool?
+
+      def send_sms=: (bool) -> bool
+
+      attr_reader send_viber: bool?
+
+      def send_viber=: (bool) -> bool
+
+      attr_reader subscription_behavior: String?
+
+      def subscription_behavior=: (String) -> String
+
+      attr_reader success_redirect_url: String?
+
+      def success_redirect_url=: (String) -> String
+
+      def initialize: (
+        amount: Float,
+        description: String,
+        ?account_id: String,
+        ?culture_name: String,
+        ?currency: String,
+        ?email: String,
+        ?fail_redirect_url: String,
+        ?invoice_id: String,
+        ?json_data: top,
+        ?offer_uri: String,
+        ?phone: String,
+        ?require_confirmation: bool,
+        ?send_email: bool,
+        ?send_sms: bool,
+        ?send_viber: bool,
+        ?subscription_behavior: String,
+        ?success_redirect_url: String,
+        ?request_options: Cloudpayments::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        amount: Float,
+        description: String,
+        account_id: String,
+        culture_name: String,
+        currency: String,
+        email: String,
+        fail_redirect_url: String,
+        invoice_id: String,
+        json_data: top,
+        offer_uri: String,
+        phone: String,
+        require_confirmation: bool,
+        send_email: bool,
+        send_sms: bool,
+        send_viber: bool,
+        subscription_behavior: String,
+        success_redirect_url: String,
+        request_options: Cloudpayments::RequestOptions
+      }
+    end
+  end
+end

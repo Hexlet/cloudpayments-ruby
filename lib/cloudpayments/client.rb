@@ -24,6 +24,12 @@ module Cloudpayments
     # @return [Cloudpayments::Resources::Payments]
     attr_reader :payments
 
+    # @return [Cloudpayments::Resources::Subscriptions]
+    attr_reader :subscriptions
+
+    # @return [Cloudpayments::Resources::Orders]
+    attr_reader :orders
+
     # @return [Cloudpayments::Resources::Models]
     attr_reader :models
 
@@ -73,6 +79,8 @@ module Cloudpayments
       )
 
       @payments = Cloudpayments::Resources::Payments.new(client: self)
+      @subscriptions = Cloudpayments::Resources::Subscriptions.new(client: self)
+      @orders = Cloudpayments::Resources::Orders.new(client: self)
       @models = Cloudpayments::Resources::Models.new(client: self)
     end
   end
