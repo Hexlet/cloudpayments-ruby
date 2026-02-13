@@ -1,6 +1,8 @@
 module Cloudpayments
   module Resources
     class Payments
+      attr_reader tokens: Cloudpayments::Resources::Payments::Tokens
+
       def auth: (
         amount: Float,
         card_cryptogram_packet: String,

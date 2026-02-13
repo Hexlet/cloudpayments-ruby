@@ -3,6 +3,9 @@
 module Cloudpayments
   module Resources
     class Payments
+      sig { returns(Cloudpayments::Resources::Payments::Tokens) }
+      attr_reader :tokens
+
       # Двухстадийная оплата по криптограмме
       #
       # Выполняет только авторизацию (холдирование средств). Для списания необходимо

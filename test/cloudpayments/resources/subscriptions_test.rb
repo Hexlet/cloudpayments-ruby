@@ -27,7 +27,7 @@ class Cloudpayments::Test::Resources::SubscriptionsTest < Cloudpayments::Test::R
       response => {
         success: Cloudpayments::Internal::Type::Boolean,
         message: String | nil,
-        model: Cloudpayments::Models::SubscriptionCreateResponse::Model | nil
+        model: Cloudpayments::Subscription | nil
       }
     end
   end
@@ -45,7 +45,7 @@ class Cloudpayments::Test::Resources::SubscriptionsTest < Cloudpayments::Test::R
       response => {
         success: Cloudpayments::Internal::Type::Boolean,
         message: String | nil,
-        model: Cloudpayments::Models::SubscriptionUpdateResponse::Model | nil
+        model: Cloudpayments::Subscription | nil
       }
     end
   end
@@ -80,7 +80,7 @@ class Cloudpayments::Test::Resources::SubscriptionsTest < Cloudpayments::Test::R
       response => {
         success: Cloudpayments::Internal::Type::Boolean,
         message: String | nil,
-        model: ^(Cloudpayments::Internal::Type::ArrayOf[Cloudpayments::Models::SubscriptionFindResponse::Model]) | nil
+        model: ^(Cloudpayments::Internal::Type::ArrayOf[Cloudpayments::Subscription]) | nil
       }
     end
   end
@@ -98,7 +98,7 @@ class Cloudpayments::Test::Resources::SubscriptionsTest < Cloudpayments::Test::R
       response => {
         success: Cloudpayments::Internal::Type::Boolean,
         message: String | nil,
-        model: Cloudpayments::Models::SubscriptionGetResponse::Model | nil
+        model: Cloudpayments::Subscription | nil
       }
     end
   end

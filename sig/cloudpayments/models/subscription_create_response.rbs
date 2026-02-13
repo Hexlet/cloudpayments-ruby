@@ -1,11 +1,7 @@
 module Cloudpayments
   module Models
     type subscription_create_response =
-      {
-        success: bool,
-        message: String,
-        model: Cloudpayments::Models::SubscriptionCreateResponse::Model
-      }
+      { success: bool, message: String, model: Cloudpayments::Subscription }
 
     class SubscriptionCreateResponse < Cloudpayments::Internal::Type::BaseModel
       attr_accessor success: bool
@@ -14,178 +10,21 @@ module Cloudpayments
 
       def message=: (String) -> String
 
-      attr_reader model: Cloudpayments::Models::SubscriptionCreateResponse::Model?
+      attr_reader model: Cloudpayments::Subscription?
 
-      def model=: (
-        Cloudpayments::Models::SubscriptionCreateResponse::Model
-      ) -> Cloudpayments::Models::SubscriptionCreateResponse::Model
+      def model=: (Cloudpayments::Subscription) -> Cloudpayments::Subscription
 
       def initialize: (
         success: bool,
         ?message: String,
-        ?model: Cloudpayments::Models::SubscriptionCreateResponse::Model
+        ?model: Cloudpayments::Subscription
       ) -> void
 
       def to_hash: -> {
         success: bool,
         message: String,
-        model: Cloudpayments::Models::SubscriptionCreateResponse::Model
+        model: Cloudpayments::Subscription
       }
-
-      type model =
-        {
-          account_id: String,
-          amount: Float,
-          culture_name: String,
-          currency: String,
-          currency_code: Integer,
-          failed_transactions_number: Integer,
-          id: String,
-          interval: String,
-          interval_code: Integer,
-          period: Integer,
-          require_confirmation: bool,
-          start_date: String,
-          start_date_iso: String,
-          status: String,
-          status_code: Integer,
-          successful_transactions_number: Integer,
-          description: String,
-          email: String,
-          failover_scheme_id: String,
-          last_transaction_date: String,
-          last_transaction_date_iso: String,
-          max_periods: Integer,
-          next_transaction_date: String,
-          next_transaction_date_iso: String,
-          receipt: top
-        }
-
-      class Model < Cloudpayments::Internal::Type::BaseModel
-        attr_accessor account_id: String
-
-        attr_accessor amount: Float
-
-        attr_accessor culture_name: String
-
-        attr_accessor currency: String
-
-        attr_accessor currency_code: Integer
-
-        attr_accessor failed_transactions_number: Integer
-
-        attr_accessor id: String
-
-        attr_accessor interval: String
-
-        attr_accessor interval_code: Integer
-
-        attr_accessor period: Integer
-
-        attr_accessor require_confirmation: bool
-
-        attr_accessor start_date: String
-
-        attr_accessor start_date_iso: String
-
-        attr_accessor status: String
-
-        attr_accessor status_code: Integer
-
-        attr_accessor successful_transactions_number: Integer
-
-        attr_reader description: String?
-
-        def description=: (String) -> String
-
-        attr_reader email: String?
-
-        def email=: (String) -> String
-
-        attr_reader failover_scheme_id: String?
-
-        def failover_scheme_id=: (String) -> String
-
-        attr_reader last_transaction_date: String?
-
-        def last_transaction_date=: (String) -> String
-
-        attr_reader last_transaction_date_iso: String?
-
-        def last_transaction_date_iso=: (String) -> String
-
-        attr_reader max_periods: Integer?
-
-        def max_periods=: (Integer) -> Integer
-
-        attr_reader next_transaction_date: String?
-
-        def next_transaction_date=: (String) -> String
-
-        attr_reader next_transaction_date_iso: String?
-
-        def next_transaction_date_iso=: (String) -> String
-
-        attr_reader receipt: top?
-
-        def receipt=: (top) -> top
-
-        def initialize: (
-          account_id: String,
-          amount: Float,
-          culture_name: String,
-          currency: String,
-          currency_code: Integer,
-          failed_transactions_number: Integer,
-          id: String,
-          interval: String,
-          interval_code: Integer,
-          period: Integer,
-          require_confirmation: bool,
-          start_date: String,
-          start_date_iso: String,
-          status: String,
-          status_code: Integer,
-          successful_transactions_number: Integer,
-          ?description: String,
-          ?email: String,
-          ?failover_scheme_id: String,
-          ?last_transaction_date: String,
-          ?last_transaction_date_iso: String,
-          ?max_periods: Integer,
-          ?next_transaction_date: String,
-          ?next_transaction_date_iso: String,
-          ?receipt: top
-        ) -> void
-
-        def to_hash: -> {
-          account_id: String,
-          amount: Float,
-          culture_name: String,
-          currency: String,
-          currency_code: Integer,
-          failed_transactions_number: Integer,
-          id: String,
-          interval: String,
-          interval_code: Integer,
-          period: Integer,
-          require_confirmation: bool,
-          start_date: String,
-          start_date_iso: String,
-          status: String,
-          status_code: Integer,
-          successful_transactions_number: Integer,
-          description: String,
-          email: String,
-          failover_scheme_id: String,
-          last_transaction_date: String,
-          last_transaction_date_iso: String,
-          max_periods: Integer,
-          next_transaction_date: String,
-          next_transaction_date_iso: String,
-          receipt: top
-        }
-      end
     end
   end
 end

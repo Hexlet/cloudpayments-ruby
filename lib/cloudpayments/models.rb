@@ -56,7 +56,11 @@ module Cloudpayments
 
   PaymentRefundParams = Cloudpayments::Models::PaymentRefundParams
 
+  Payments = Cloudpayments::Models::Payments
+
   PaymentVoidParams = Cloudpayments::Models::PaymentVoidParams
+
+  Subscription = Cloudpayments::Models::Subscription
 
   SubscriptionCancelParams = Cloudpayments::Models::SubscriptionCancelParams
 
@@ -67,4 +71,6 @@ module Cloudpayments
   SubscriptionGetParams = Cloudpayments::Models::SubscriptionGetParams
 
   SubscriptionUpdateParams = Cloudpayments::Models::SubscriptionUpdateParams
+
+  Transaction = Cloudpayments::Models::Transaction
 end

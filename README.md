@@ -15,7 +15,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "cloudpayments", "~> 0.3.0"
+gem "cloudpayments", "~> 0.4.0"
 ```
 
 <!-- x-release-please-end -->
@@ -26,7 +26,10 @@ gem "cloudpayments", "~> 0.3.0"
 require "bundler/setup"
 require "cloudpayments"
 
-cloudpayments = Cloudpayments::Client.new(public_id: "My Public ID", api_secret: "My API Secret")
+cloudpayments = Cloudpayments::Client.new(
+  public_id: ENV["CLOUDPAYMENTS_PUBLIC_ID"], # This is the default and can be omitted
+  api_secret: ENV["CLOUDPAYMENTS_API_SECRET"] # This is the default and can be omitted
+)
 
 response = cloudpayments.payments.charge(
   amount: 100,
@@ -89,9 +92,7 @@ You can use the `max_retries` option to configure or disable this:
 ```ruby
 # Configure the default for all requests:
 cloudpayments = Cloudpayments::Client.new(
-  max_retries: 0, # default is 2
-  public_id: "My Public ID",
-  api_secret: "My API Secret"
+  max_retries: 0 # default is 2
 )
 
 # Or, configure per-request:
@@ -111,9 +112,7 @@ By default, requests will time out after 60 seconds. You can use the timeout opt
 ```ruby
 # Configure the default for all requests:
 cloudpayments = Cloudpayments::Client.new(
-  timeout: nil, # default is 60
-  public_id: "My Public ID",
-  api_secret: "My API Secret"
+  timeout: nil # default is 60
 )
 
 # Or, configure per-request:
