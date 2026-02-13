@@ -1,4 +1,8 @@
 module Cloudpayments
+  class OrderCancelParams = Cloudpayments::Models::OrderCancelParams
+
+  class OrderCreateParams = Cloudpayments::Models::OrderCreateParams
+
   class PaymentAuthParams = Cloudpayments::Models::PaymentAuthParams
 
   class PaymentChargeParams = Cloudpayments::Models::PaymentChargeParams
@@ -10,4 +14,14 @@ module Cloudpayments
   class PaymentRefundParams = Cloudpayments::Models::PaymentRefundParams
 
   class PaymentVoidParams = Cloudpayments::Models::PaymentVoidParams
+
+  class SubscriptionCancelParams = Cloudpayments::Models::SubscriptionCancelParams
+
+  class SubscriptionCreateParams = Cloudpayments::Models::SubscriptionCreateParams
+
+  class SubscriptionFindParams = Cloudpayments::Models::SubscriptionFindParams
+
+  class SubscriptionGetParams = Cloudpayments::Models::SubscriptionGetParams
+
+  class SubscriptionUpdateParams = Cloudpayments::Models::SubscriptionUpdateParams
 end
