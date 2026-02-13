@@ -3,6 +3,9 @@
 module Cloudpayments
   module Resources
     class Payments
+      # @return [Cloudpayments::Resources::Payments::Tokens]
+      attr_reader :tokens
+
       # Двухстадийная оплата по криптограмме
       #
       # Выполняет только авторизацию (холдирование средств). Для списания необходимо
@@ -222,6 +225,7 @@ module Cloudpayments
       # @param client [Cloudpayments::Client]
       def initialize(client:)
         @client = client
+        @tokens = Cloudpayments::Resources::Payments::Tokens.new(client: client)
       end
     end
   end

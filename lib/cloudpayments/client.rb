@@ -30,8 +30,15 @@ module Cloudpayments
     # @return [Cloudpayments::Resources::Orders]
     attr_reader :orders
 
-    # @return [Cloudpayments::Resources::Models]
-    attr_reader :models
+    # @api private
+    #
+    # @return [Hash{String=>String}]
+    private def auth_headers
+      return {} if @public_id.nil? || @api_secret.nil?
+
+      base64_credentials = ["#{@public_id}:#{@api_secret}"].pack("m0")
+      {"authorization" => "Basic #{base64_credentials}"}
+    end
 
     # Creates and returns a new client for interacting with the API.
     #
@@ -81,7 +88,6 @@ module Cloudpayments
       @payments = Cloudpayments::Resources::Payments.new(client: self)
       @subscriptions = Cloudpayments::Resources::Subscriptions.new(client: self)
       @orders = Cloudpayments::Resources::Orders.new(client: self)
-      @models = Cloudpayments::Resources::Models.new(client: self)
     end
   end
 end
