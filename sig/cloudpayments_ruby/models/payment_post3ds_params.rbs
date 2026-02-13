@@ -1,0 +1,28 @@
+module CloudpaymentsRuby
+  module Models
+    type payment_post3ds_params =
+      { pa_res: String, transaction_id: Integer }
+      & CloudpaymentsRuby::Internal::Type::request_parameters
+
+    class PaymentPost3dsParams < CloudpaymentsRuby::Internal::Type::BaseModel
+      extend CloudpaymentsRuby::Internal::Type::RequestParameters::Converter
+      include CloudpaymentsRuby::Internal::Type::RequestParameters
+
+      attr_accessor pa_res: String
+
+      attr_accessor transaction_id: Integer
+
+      def initialize: (
+        pa_res: String,
+        transaction_id: Integer,
+        ?request_options: CloudpaymentsRuby::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        pa_res: String,
+        transaction_id: Integer,
+        request_options: CloudpaymentsRuby::RequestOptions
+      }
+    end
+  end
+end

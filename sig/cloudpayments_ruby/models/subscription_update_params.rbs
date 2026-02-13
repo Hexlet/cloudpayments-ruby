@@ -1,0 +1,96 @@
+module CloudpaymentsRuby
+  module Models
+    type subscription_update_params =
+      {
+        id: String,
+        amount: Float,
+        culture_name: String,
+        currency: String,
+        customer_receipt: top,
+        description: String,
+        interval: String,
+        max_periods: Integer,
+        period: Integer,
+        require_confirmation: bool,
+        start_date: Time
+      }
+      & CloudpaymentsRuby::Internal::Type::request_parameters
+
+    class SubscriptionUpdateParams < CloudpaymentsRuby::Internal::Type::BaseModel
+      extend CloudpaymentsRuby::Internal::Type::RequestParameters::Converter
+      include CloudpaymentsRuby::Internal::Type::RequestParameters
+
+      attr_accessor id: String
+
+      attr_reader amount: Float?
+
+      def amount=: (Float) -> Float
+
+      attr_reader culture_name: String?
+
+      def culture_name=: (String) -> String
+
+      attr_reader currency: String?
+
+      def currency=: (String) -> String
+
+      attr_reader customer_receipt: top?
+
+      def customer_receipt=: (top) -> top
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      attr_reader interval: String?
+
+      def interval=: (String) -> String
+
+      attr_reader max_periods: Integer?
+
+      def max_periods=: (Integer) -> Integer
+
+      attr_reader period: Integer?
+
+      def period=: (Integer) -> Integer
+
+      attr_reader require_confirmation: bool?
+
+      def require_confirmation=: (bool) -> bool
+
+      attr_reader start_date: Time?
+
+      def start_date=: (Time) -> Time
+
+      def initialize: (
+        id: String,
+        ?amount: Float,
+        ?culture_name: String,
+        ?currency: String,
+        ?customer_receipt: top,
+        ?description: String,
+        ?interval: String,
+        ?max_periods: Integer,
+        ?period: Integer,
+        ?require_confirmation: bool,
+        ?start_date: Time,
+        ?request_options: CloudpaymentsRuby::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        amount: Float,
+        culture_name: String,
+        currency: String,
+        customer_receipt: top,
+        description: String,
+        interval: String,
+        max_periods: Integer,
+        period: Integer,
+        require_confirmation: bool,
+        start_date: Time,
+        request_options: CloudpaymentsRuby::RequestOptions
+      }
+    end
+  end
+end

@@ -1,0 +1,33 @@
+module CloudpaymentsRuby
+  class OrderCancelParams = CloudpaymentsRuby::Models::OrderCancelParams
+
+  class OrderCreateParams = CloudpaymentsRuby::Models::OrderCreateParams
+
+  class PaymentAuthParams = CloudpaymentsRuby::Models::PaymentAuthParams
+
+  class PaymentChargeParams = CloudpaymentsRuby::Models::PaymentChargeParams
+
+  class PaymentConfirmParams = CloudpaymentsRuby::Models::PaymentConfirmParams
+
+  class PaymentPost3dsParams = CloudpaymentsRuby::Models::PaymentPost3dsParams
+
+  class PaymentRefundParams = CloudpaymentsRuby::Models::PaymentRefundParams
+
+  module Payments = CloudpaymentsRuby::Models::Payments
+
+  class PaymentVoidParams = CloudpaymentsRuby::Models::PaymentVoidParams
+
+  class Subscription = CloudpaymentsRuby::Models::Subscription
+
+  class SubscriptionCancelParams = CloudpaymentsRuby::Models::SubscriptionCancelParams
+
+  class SubscriptionCreateParams = CloudpaymentsRuby::Models::SubscriptionCreateParams
+
+  class SubscriptionFindParams = CloudpaymentsRuby::Models::SubscriptionFindParams
+
+  class SubscriptionGetParams = CloudpaymentsRuby::Models::SubscriptionGetParams
+
+  class SubscriptionUpdateParams = CloudpaymentsRuby::Models::SubscriptionUpdateParams
+
+  class Transaction = CloudpaymentsRuby::Models::Transaction
+end

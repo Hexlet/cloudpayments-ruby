@@ -1,0 +1,53 @@
+module CloudpaymentsRuby
+  module Resources
+    class Subscriptions
+      def create: (
+        account_id: String,
+        amount: Float,
+        currency: String,
+        description: String,
+        interval: String,
+        period: Integer,
+        require_confirmation: bool,
+        start_date: Time,
+        token: String,
+        ?customer_receipt: top,
+        ?email: String,
+        ?max_periods: Integer,
+        ?request_options: CloudpaymentsRuby::request_opts
+      ) -> CloudpaymentsRuby::Models::SubscriptionCreateResponse
+
+      def update: (
+        id: String,
+        ?amount: Float,
+        ?culture_name: String,
+        ?currency: String,
+        ?customer_receipt: top,
+        ?description: String,
+        ?interval: String,
+        ?max_periods: Integer,
+        ?period: Integer,
+        ?require_confirmation: bool,
+        ?start_date: Time,
+        ?request_options: CloudpaymentsRuby::request_opts
+      ) -> CloudpaymentsRuby::Models::SubscriptionUpdateResponse
+
+      def cancel: (
+        id: String,
+        ?request_options: CloudpaymentsRuby::request_opts
+      ) -> CloudpaymentsRuby::Models::SubscriptionCancelResponse
+
+      def find: (
+        account_id: String,
+        ?request_options: CloudpaymentsRuby::request_opts
+      ) -> CloudpaymentsRuby::Models::SubscriptionFindResponse
+
+      def get: (
+        id: String,
+        ?request_options: CloudpaymentsRuby::request_opts
+      ) -> CloudpaymentsRuby::Models::SubscriptionGetResponse
+
+      def initialize: (client: CloudpaymentsRuby::Client) -> void
+    end
+  end
+end

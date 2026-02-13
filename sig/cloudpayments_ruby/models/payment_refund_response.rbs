@@ -1,0 +1,46 @@
+module CloudpaymentsRuby
+  module Models
+    type payment_refund_response =
+      {
+        success: bool,
+        message: String,
+        model: CloudpaymentsRuby::Models::PaymentRefundResponse::Model
+      }
+
+    class PaymentRefundResponse < CloudpaymentsRuby::Internal::Type::BaseModel
+      attr_accessor success: bool
+
+      attr_reader message: String?
+
+      def message=: (String) -> String
+
+      attr_reader model: CloudpaymentsRuby::Models::PaymentRefundResponse::Model?
+
+      def model=: (
+        CloudpaymentsRuby::Models::PaymentRefundResponse::Model
+      ) -> CloudpaymentsRuby::Models::PaymentRefundResponse::Model
+
+      def initialize: (
+        success: bool,
+        ?message: String,
+        ?model: CloudpaymentsRuby::Models::PaymentRefundResponse::Model
+      ) -> void
+
+      def to_hash: -> {
+        success: bool,
+        message: String,
+        model: CloudpaymentsRuby::Models::PaymentRefundResponse::Model
+      }
+
+      type model = { transaction_id: Integer }
+
+      class Model < CloudpaymentsRuby::Internal::Type::BaseModel
+        attr_accessor transaction_id: Integer
+
+        def initialize: (transaction_id: Integer) -> void
+
+        def to_hash: -> { transaction_id: Integer }
+      end
+    end
+  end
+end
