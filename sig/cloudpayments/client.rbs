@@ -14,6 +14,10 @@ module Cloudpayments
 
     attr_reader payments: Cloudpayments::Resources::Payments
 
+    attr_reader subscriptions: Cloudpayments::Resources::Subscriptions
+
+    attr_reader orders: Cloudpayments::Resources::Orders
+
     attr_reader models: Cloudpayments::Resources::Models
 
     def initialize: (

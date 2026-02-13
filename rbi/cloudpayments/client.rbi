@@ -19,6 +19,12 @@ module Cloudpayments
     sig { returns(Cloudpayments::Resources::Payments) }
     attr_reader :payments
 
+    sig { returns(Cloudpayments::Resources::Subscriptions) }
+    attr_reader :subscriptions
+
+    sig { returns(Cloudpayments::Resources::Orders) }
+    attr_reader :orders
+
     sig { returns(Cloudpayments::Resources::Models) }
     attr_reader :models
 
