@@ -18,7 +18,7 @@ module Cloudpayments
 
     attr_reader orders: Cloudpayments::Resources::Orders
 
-    attr_reader models: Cloudpayments::Resources::Models
+    private def auth_headers: -> ::Hash[String, String]
 
     def initialize: (
       ?public_id: String?,

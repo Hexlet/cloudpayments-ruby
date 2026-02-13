@@ -3,6 +3,8 @@
 module Cloudpayments
   module Test
     module Resources
+      module Payments
+      end
     end
   end
 end

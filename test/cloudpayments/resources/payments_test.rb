@@ -77,7 +77,7 @@ class Cloudpayments::Test::Resources::PaymentsTest < Cloudpayments::Test::Resour
       response => {
         success: Cloudpayments::Internal::Type::Boolean,
         message: String | nil,
-        model: Cloudpayments::Models::PaymentPost3dsResponse::Model | nil
+        model: Cloudpayments::Transaction | nil
       }
     end
   end

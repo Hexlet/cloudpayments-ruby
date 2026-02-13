@@ -1,0 +1,32 @@
+module Cloudpayments
+  module Models
+    module Payments
+      type token_auth_response =
+        { success: bool, message: String, model: Cloudpayments::Transaction }
+
+      class TokenAuthResponse < Cloudpayments::Internal::Type::BaseModel
+        attr_accessor success: bool
+
+        attr_reader message: String?
+
+        def message=: (String) -> String
+
+        attr_reader model: Cloudpayments::Transaction?
+
+        def model=: (Cloudpayments::Transaction) -> Cloudpayments::Transaction
+
+        def initialize: (
+          success: bool,
+          ?message: String,
+          ?model: Cloudpayments::Transaction
+        ) -> void
+
+        def to_hash: -> {
+          success: bool,
+          message: String,
+          model: Cloudpayments::Transaction
+        }
+      end
+    end
+  end
+end

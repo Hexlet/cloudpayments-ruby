@@ -176,6 +176,11 @@ module Cloudpayments
         end
 
         # @api private
+        sig { overridable.returns(T::Hash[String, String]) }
+        private def auth_headers
+        end
+
+        # @api private
         sig { returns(String) }
         private def user_agent
         end

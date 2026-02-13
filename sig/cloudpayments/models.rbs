@@ -13,7 +13,11 @@ module Cloudpayments
 
   class PaymentRefundParams = Cloudpayments::Models::PaymentRefundParams
 
+  module Payments = Cloudpayments::Models::Payments
+
   class PaymentVoidParams = Cloudpayments::Models::PaymentVoidParams
+
+  class Subscription = Cloudpayments::Models::Subscription
 
   class SubscriptionCancelParams = Cloudpayments::Models::SubscriptionCancelParams
 
@@ -24,4 +28,6 @@ module Cloudpayments
   class SubscriptionGetParams = Cloudpayments::Models::SubscriptionGetParams
 
   class SubscriptionUpdateParams = Cloudpayments::Models::SubscriptionUpdateParams
+
+  class Transaction = Cloudpayments::Models::Transaction
 end
