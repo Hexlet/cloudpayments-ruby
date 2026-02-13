@@ -1,0 +1,91 @@
+# frozen_string_literal: true
+
+# Standard libraries.
+# rubocop:disable Lint/RedundantRequireStatement
+require "English"
+require "base64"
+require "cgi"
+require "date"
+require "erb"
+require "etc"
+require "json"
+require "net/http"
+require "openssl"
+require "pathname"
+require "rbconfig"
+require "securerandom"
+require "set"
+require "stringio"
+require "time"
+require "uri"
+# rubocop:enable Lint/RedundantRequireStatement
+
+# We already ship the preferred sorbet manifests in the package itself.
+# `tapioca` currently does not offer us a way to opt out of unnecessary compilation.
+if Object.const_defined?(:Tapioca) &&
+   caller.chain([$PROGRAM_NAME]).chain(ARGV).any?(/tapioca/) &&
+   ARGV.none?(/dsl/)
+  return
+end
+
+# Gems.
+require "connection_pool"
+
+# Package files.
+require_relative "cloudpayments_ruby/version"
+require_relative "cloudpayments_ruby/internal/util"
+require_relative "cloudpayments_ruby/internal/type/converter"
+require_relative "cloudpayments_ruby/internal/type/unknown"
+require_relative "cloudpayments_ruby/internal/type/boolean"
+require_relative "cloudpayments_ruby/internal/type/file_input"
+require_relative "cloudpayments_ruby/internal/type/enum"
+require_relative "cloudpayments_ruby/internal/type/union"
+require_relative "cloudpayments_ruby/internal/type/array_of"
+require_relative "cloudpayments_ruby/internal/type/hash_of"
+require_relative "cloudpayments_ruby/internal/type/base_model"
+require_relative "cloudpayments_ruby/internal/type/base_page"
+require_relative "cloudpayments_ruby/internal/type/request_parameters"
+require_relative "cloudpayments_ruby/internal"
+require_relative "cloudpayments_ruby/request_options"
+require_relative "cloudpayments_ruby/file_part"
+require_relative "cloudpayments_ruby/errors"
+require_relative "cloudpayments_ruby/internal/transport/base_client"
+require_relative "cloudpayments_ruby/internal/transport/pooled_net_requester"
+require_relative "cloudpayments_ruby/client"
+require_relative "cloudpayments_ruby/models/order_cancel_params"
+require_relative "cloudpayments_ruby/models/order_cancel_response"
+require_relative "cloudpayments_ruby/models/order_create_params"
+require_relative "cloudpayments_ruby/models/order_create_response"
+require_relative "cloudpayments_ruby/models/payment_auth_params"
+require_relative "cloudpayments_ruby/models/payment_auth_response"
+require_relative "cloudpayments_ruby/models/payment_charge_params"
+require_relative "cloudpayments_ruby/models/payment_charge_response"
+require_relative "cloudpayments_ruby/models/payment_confirm_params"
+require_relative "cloudpayments_ruby/models/payment_confirm_response"
+require_relative "cloudpayments_ruby/models/payment_post3ds_params"
+require_relative "cloudpayments_ruby/models/payment_post3ds_response"
+require_relative "cloudpayments_ruby/models/payment_refund_params"
+require_relative "cloudpayments_ruby/models/payment_refund_response"
+require_relative "cloudpayments_ruby/models/payments/token_auth_params"
+require_relative "cloudpayments_ruby/models/payments/token_auth_response"
+require_relative "cloudpayments_ruby/models/payments/token_charge_params"
+require_relative "cloudpayments_ruby/models/payments/token_charge_response"
+require_relative "cloudpayments_ruby/models/payment_void_params"
+require_relative "cloudpayments_ruby/models/payment_void_response"
+require_relative "cloudpayments_ruby/models/subscription"
+require_relative "cloudpayments_ruby/models/subscription_cancel_params"
+require_relative "cloudpayments_ruby/models/subscription_cancel_response"
+require_relative "cloudpayments_ruby/models/subscription_create_params"
+require_relative "cloudpayments_ruby/models/subscription_create_response"
+require_relative "cloudpayments_ruby/models/subscription_find_params"
+require_relative "cloudpayments_ruby/models/subscription_find_response"
+require_relative "cloudpayments_ruby/models/subscription_get_params"
+require_relative "cloudpayments_ruby/models/subscription_get_response"
+require_relative "cloudpayments_ruby/models/subscription_update_params"
+require_relative "cloudpayments_ruby/models/subscription_update_response"
+require_relative "cloudpayments_ruby/models/transaction"
+require_relative "cloudpayments_ruby/models"
+require_relative "cloudpayments_ruby/resources/orders"
+require_relative "cloudpayments_ruby/resources/payments"
+require_relative "cloudpayments_ruby/resources/payments/tokens"
+require_relative "cloudpayments_ruby/resources/subscriptions"

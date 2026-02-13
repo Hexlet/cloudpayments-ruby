@@ -6,7 +6,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/cloudpayments).
+Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/cloudpayments-ruby).
 
 ## Installation
 
@@ -15,7 +15,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "cloudpayments", "~> 0.4.0"
+gem "cloudpayments-ruby", "~> 0.4.1"
 ```
 
 <!-- x-release-please-end -->
@@ -24,9 +24,9 @@ gem "cloudpayments", "~> 0.4.0"
 
 ```ruby
 require "bundler/setup"
-require "cloudpayments"
+require "cloudpayments_ruby"
 
-cloudpayments = Cloudpayments::Client.new(
+cloudpayments = CloudpaymentsRuby::Client.new(
   public_id: ENV["CLOUDPAYMENTS_PUBLIC_ID"], # This is the default and can be omitted
   api_secret: ENV["CLOUDPAYMENTS_API_SECRET"] # This is the default and can be omitted
 )
@@ -44,7 +44,7 @@ puts(response)
 
 ### Handling errors
 
-When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Cloudpayments::Errors::APIError` will be thrown:
+When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `CloudpaymentsRuby::Errors::APIError` will be thrown:
 
 ```ruby
 begin
@@ -54,12 +54,12 @@ begin
     ip_address: "127.0.0.1",
     currency: "RUB"
   )
-rescue Cloudpayments::Errors::APIConnectionError => e
+rescue CloudpaymentsRuby::Errors::APIConnectionError => e
   puts("The server could not be reached")
   puts(e.cause)  # an underlying Exception, likely raised within `net/http`
-rescue Cloudpayments::Errors::RateLimitError => e
+rescue CloudpaymentsRuby::Errors::RateLimitError => e
   puts("A 429 status code was received; we should back off a bit.")
-rescue Cloudpayments::Errors::APIStatusError => e
+rescue CloudpaymentsRuby::Errors::APIStatusError => e
   puts("Another non-200-range status code was received")
   puts(e.status)
 end
@@ -91,7 +91,7 @@ You can use the `max_retries` option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
-cloudpayments = Cloudpayments::Client.new(
+cloudpayments = CloudpaymentsRuby::Client.new(
   max_retries: 0 # default is 2
 )
 
@@ -111,7 +111,7 @@ By default, requests will time out after 60 seconds. You can use the timeout opt
 
 ```ruby
 # Configure the default for all requests:
-cloudpayments = Cloudpayments::Client.new(
+cloudpayments = CloudpaymentsRuby::Client.new(
   timeout: nil # default is 60
 )
 
@@ -125,7 +125,7 @@ cloudpayments.payments.charge(
 )
 ```
 
-On timeout, `Cloudpayments::Errors::APITimeoutError` is raised.
+On timeout, `CloudpaymentsRuby::Errors::APITimeoutError` is raised.
 
 Note that requests that time out are retried by default.
 
@@ -133,7 +133,7 @@ Note that requests that time out are retried by default.
 
 ### BaseModel
 
-All parameter and response objects inherit from `Cloudpayments::Internal::Type::BaseModel`, which provides several conveniences, including:
+All parameter and response objects inherit from `CloudpaymentsRuby::Internal::Type::BaseModel`, which provides several conveniences, including:
 
 1. All fields, including unknown ones, are accessible with `obj[:prop]` syntax, and can be destructured with `obj => {prop: prop}` or pattern-matching syntax.
 
@@ -188,9 +188,9 @@ response = client.request(
 
 ### Concurrency & connection pooling
 
-The `Cloudpayments::Client` instances are threadsafe, but are only are fork-safe when there are no in-flight HTTP requests.
+The `CloudpaymentsRuby::Client` instances are threadsafe, but are only are fork-safe when there are no in-flight HTTP requests.
 
-Each instance of `Cloudpayments::Client` has its own HTTP connection pool with a default size of 99. As such, we recommend instantiating the client once per application in most settings.
+Each instance of `CloudpaymentsRuby::Client` has its own HTTP connection pool with a default size of 99. As such, we recommend instantiating the client once per application in most settings.
 
 When all available connections from the pool are checked out, requests wait for a new connection to become available, with queue time counting towards the request timeout.
 
@@ -225,7 +225,7 @@ cloudpayments.payments.charge(
 )
 
 # You can also splat a full Params class:
-params = Cloudpayments::PaymentChargeParams.new(
+params = CloudpaymentsRuby::PaymentChargeParams.new(
   amount: 100,
   card_cryptogram_packet: "cryptogram_data",
   ip_address: "127.0.0.1",

@@ -1,0 +1,32 @@
+module CloudpaymentsRuby
+  module Models
+    type payment_post3ds_response =
+      { success: bool, message: String, model: CloudpaymentsRuby::Transaction }
+
+    class PaymentPost3dsResponse < CloudpaymentsRuby::Internal::Type::BaseModel
+      attr_accessor success: bool
+
+      attr_reader message: String?
+
+      def message=: (String) -> String
+
+      attr_reader model: CloudpaymentsRuby::Transaction?
+
+      def model=: (
+        CloudpaymentsRuby::Transaction
+      ) -> CloudpaymentsRuby::Transaction
+
+      def initialize: (
+        success: bool,
+        ?message: String,
+        ?model: CloudpaymentsRuby::Transaction
+      ) -> void
+
+      def to_hash: -> {
+        success: bool,
+        message: String,
+        model: CloudpaymentsRuby::Transaction
+      }
+    end
+  end
+end

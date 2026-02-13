@@ -1,0 +1,41 @@
+module CloudpaymentsRuby
+  module Resources
+    class Payments
+      class Tokens
+        def auth: (
+          account_id: String,
+          amount: Float,
+          token: String,
+          tr_initiator_code: Integer,
+          ?currency: String,
+          ?description: String,
+          ?email: String,
+          ?invoice_id: String,
+          ?ip_address: String,
+          ?json_data: top,
+          ?payer: CloudpaymentsRuby::Payments::TokenAuthParams::Payer,
+          ?payment_scheduled: Integer,
+          ?request_options: CloudpaymentsRuby::request_opts
+        ) -> CloudpaymentsRuby::Models::Payments::TokenAuthResponse
+
+        def charge: (
+          account_id: String,
+          amount: Float,
+          token: String,
+          tr_initiator_code: Integer,
+          ?currency: String,
+          ?description: String,
+          ?email: String,
+          ?invoice_id: String,
+          ?ip_address: String,
+          ?json_data: top,
+          ?payer: CloudpaymentsRuby::Payments::TokenChargeParams::Payer,
+          ?payment_scheduled: Integer,
+          ?request_options: CloudpaymentsRuby::request_opts
+        ) -> CloudpaymentsRuby::Models::Payments::TokenChargeResponse
+
+        def initialize: (client: CloudpaymentsRuby::Client) -> void
+      end
+    end
+  end
+end

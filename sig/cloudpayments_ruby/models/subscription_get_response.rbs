@@ -1,0 +1,32 @@
+module CloudpaymentsRuby
+  module Models
+    type subscription_get_response =
+      { success: bool, message: String, model: CloudpaymentsRuby::Subscription }
+
+    class SubscriptionGetResponse < CloudpaymentsRuby::Internal::Type::BaseModel
+      attr_accessor success: bool
+
+      attr_reader message: String?
+
+      def message=: (String) -> String
+
+      attr_reader model: CloudpaymentsRuby::Subscription?
+
+      def model=: (
+        CloudpaymentsRuby::Subscription
+      ) -> CloudpaymentsRuby::Subscription
+
+      def initialize: (
+        success: bool,
+        ?message: String,
+        ?model: CloudpaymentsRuby::Subscription
+      ) -> void
+
+      def to_hash: -> {
+        success: bool,
+        message: String,
+        model: CloudpaymentsRuby::Subscription
+      }
+    end
+  end
+end

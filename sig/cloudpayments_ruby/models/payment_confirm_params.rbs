@@ -1,0 +1,34 @@
+module CloudpaymentsRuby
+  module Models
+    type payment_confirm_params =
+      { amount: Float, transaction_id: Integer, json_data: top }
+      & CloudpaymentsRuby::Internal::Type::request_parameters
+
+    class PaymentConfirmParams < CloudpaymentsRuby::Internal::Type::BaseModel
+      extend CloudpaymentsRuby::Internal::Type::RequestParameters::Converter
+      include CloudpaymentsRuby::Internal::Type::RequestParameters
+
+      attr_accessor amount: Float
+
+      attr_accessor transaction_id: Integer
+
+      attr_reader json_data: top?
+
+      def json_data=: (top) -> top
+
+      def initialize: (
+        amount: Float,
+        transaction_id: Integer,
+        ?json_data: top,
+        ?request_options: CloudpaymentsRuby::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        amount: Float,
+        transaction_id: Integer,
+        json_data: top,
+        request_options: CloudpaymentsRuby::RequestOptions
+      }
+    end
+  end
+end

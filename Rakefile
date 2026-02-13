@@ -162,7 +162,7 @@ multitask(:"build:gem") do
     sig/*
   GLOB
 
-  sh(*%w[gem build -- cloudpayments.gemspec])
+  sh(*%w[gem build -- cloudpayments_ruby.gemspec])
   rm_rf(ignore_file)
 end
 

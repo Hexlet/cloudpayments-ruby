@@ -1,0 +1,183 @@
+module CloudpaymentsRuby
+  module Models
+    module Payments
+      type token_auth_params =
+        {
+          account_id: String,
+          amount: Float,
+          token: String,
+          tr_initiator_code: Integer,
+          currency: String,
+          description: String,
+          email: String,
+          invoice_id: String,
+          ip_address: String,
+          json_data: top,
+          payer: CloudpaymentsRuby::Payments::TokenAuthParams::Payer,
+          payment_scheduled: Integer
+        }
+        & CloudpaymentsRuby::Internal::Type::request_parameters
+
+      class TokenAuthParams < CloudpaymentsRuby::Internal::Type::BaseModel
+        extend CloudpaymentsRuby::Internal::Type::RequestParameters::Converter
+        include CloudpaymentsRuby::Internal::Type::RequestParameters
+
+        attr_accessor account_id: String
+
+        attr_accessor amount: Float
+
+        attr_accessor token: String
+
+        attr_accessor tr_initiator_code: Integer
+
+        attr_reader currency: String?
+
+        def currency=: (String) -> String
+
+        attr_reader description: String?
+
+        def description=: (String) -> String
+
+        attr_reader email: String?
+
+        def email=: (String) -> String
+
+        attr_reader invoice_id: String?
+
+        def invoice_id=: (String) -> String
+
+        attr_reader ip_address: String?
+
+        def ip_address=: (String) -> String
+
+        attr_reader json_data: top?
+
+        def json_data=: (top) -> top
+
+        attr_reader payer: CloudpaymentsRuby::Payments::TokenAuthParams::Payer?
+
+        def payer=: (
+          CloudpaymentsRuby::Payments::TokenAuthParams::Payer
+        ) -> CloudpaymentsRuby::Payments::TokenAuthParams::Payer
+
+        attr_reader payment_scheduled: Integer?
+
+        def payment_scheduled=: (Integer) -> Integer
+
+        def initialize: (
+          account_id: String,
+          amount: Float,
+          token: String,
+          tr_initiator_code: Integer,
+          ?currency: String,
+          ?description: String,
+          ?email: String,
+          ?invoice_id: String,
+          ?ip_address: String,
+          ?json_data: top,
+          ?payer: CloudpaymentsRuby::Payments::TokenAuthParams::Payer,
+          ?payment_scheduled: Integer,
+          ?request_options: CloudpaymentsRuby::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          account_id: String,
+          amount: Float,
+          token: String,
+          tr_initiator_code: Integer,
+          currency: String,
+          description: String,
+          email: String,
+          invoice_id: String,
+          ip_address: String,
+          json_data: top,
+          payer: CloudpaymentsRuby::Payments::TokenAuthParams::Payer,
+          payment_scheduled: Integer,
+          request_options: CloudpaymentsRuby::RequestOptions
+        }
+
+        type payer =
+          {
+            address: String,
+            birth: String,
+            city: String,
+            country: String,
+            first_name: String,
+            last_name: String,
+            middle_name: String,
+            phone: String,
+            postcode: String,
+            street: String
+          }
+
+        class Payer < CloudpaymentsRuby::Internal::Type::BaseModel
+          attr_reader address: String?
+
+          def address=: (String) -> String
+
+          attr_reader birth: String?
+
+          def birth=: (String) -> String
+
+          attr_reader city: String?
+
+          def city=: (String) -> String
+
+          attr_reader country: String?
+
+          def country=: (String) -> String
+
+          attr_reader first_name: String?
+
+          def first_name=: (String) -> String
+
+          attr_reader last_name: String?
+
+          def last_name=: (String) -> String
+
+          attr_reader middle_name: String?
+
+          def middle_name=: (String) -> String
+
+          attr_reader phone: String?
+
+          def phone=: (String) -> String
+
+          attr_reader postcode: String?
+
+          def postcode=: (String) -> String
+
+          attr_reader street: String?
+
+          def street=: (String) -> String
+
+          def initialize: (
+            ?address: String,
+            ?birth: String,
+            ?city: String,
+            ?country: String,
+            ?first_name: String,
+            ?last_name: String,
+            ?middle_name: String,
+            ?phone: String,
+            ?postcode: String,
+            ?street: String
+          ) -> void
+
+          def to_hash: -> {
+            address: String,
+            birth: String,
+            city: String,
+            country: String,
+            first_name: String,
+            last_name: String,
+            middle_name: String,
+            phone: String,
+            postcode: String,
+            street: String
+          }
+        end
+      end
+    end
+  end
+end

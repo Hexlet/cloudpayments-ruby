@@ -1,0 +1,24 @@
+module CloudpaymentsRuby
+  module Models
+    type payment_void_params =
+      { transaction_id: Integer }
+      & CloudpaymentsRuby::Internal::Type::request_parameters
+
+    class PaymentVoidParams < CloudpaymentsRuby::Internal::Type::BaseModel
+      extend CloudpaymentsRuby::Internal::Type::RequestParameters::Converter
+      include CloudpaymentsRuby::Internal::Type::RequestParameters
+
+      attr_accessor transaction_id: Integer
+
+      def initialize: (
+        transaction_id: Integer,
+        ?request_options: CloudpaymentsRuby::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        transaction_id: Integer,
+        request_options: CloudpaymentsRuby::RequestOptions
+      }
+    end
+  end
+end

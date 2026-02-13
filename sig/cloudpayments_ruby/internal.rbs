@@ -1,0 +1,10 @@
+module CloudpaymentsRuby
+  module Internal
+    extend CloudpaymentsRuby::Internal::Util::SorbetRuntimeSupport
+
+    type file_input =
+      Pathname | StringIO | IO | String | CloudpaymentsRuby::FilePart
+
+    OMIT: Object
+  end
+end

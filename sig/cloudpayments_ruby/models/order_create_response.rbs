@@ -1,0 +1,146 @@
+module CloudpaymentsRuby
+  module Models
+    type order_create_response =
+      {
+        success: bool,
+        message: String,
+        model: CloudpaymentsRuby::Models::OrderCreateResponse::Model
+      }
+
+    class OrderCreateResponse < CloudpaymentsRuby::Internal::Type::BaseModel
+      attr_accessor success: bool
+
+      attr_reader message: String?
+
+      def message=: (String) -> String
+
+      attr_reader model: CloudpaymentsRuby::Models::OrderCreateResponse::Model?
+
+      def model=: (
+        CloudpaymentsRuby::Models::OrderCreateResponse::Model
+      ) -> CloudpaymentsRuby::Models::OrderCreateResponse::Model
+
+      def initialize: (
+        success: bool,
+        ?message: String,
+        ?model: CloudpaymentsRuby::Models::OrderCreateResponse::Model
+      ) -> void
+
+      def to_hash: -> {
+        success: bool,
+        message: String,
+        model: CloudpaymentsRuby::Models::OrderCreateResponse::Model
+      }
+
+      type model =
+        {
+          amount: Float,
+          created_date: String,
+          created_date_iso: String,
+          culture_name: String,
+          currency: String,
+          currency_code: Integer,
+          description: String,
+          id: String,
+          internal_id: Integer,
+          number: Integer,
+          require_confirmation: bool,
+          status: String,
+          status_code: Integer,
+          url: String,
+          email: String,
+          payment_date: String,
+          payment_date_iso: String,
+          phone: String
+        }
+
+      class Model < CloudpaymentsRuby::Internal::Type::BaseModel
+        attr_accessor amount: Float
+
+        attr_accessor created_date: String
+
+        attr_accessor created_date_iso: String
+
+        attr_accessor culture_name: String
+
+        attr_accessor currency: String
+
+        attr_accessor currency_code: Integer
+
+        attr_accessor description: String
+
+        attr_accessor id: String
+
+        attr_accessor internal_id: Integer
+
+        attr_accessor number: Integer
+
+        attr_accessor require_confirmation: bool
+
+        attr_accessor status: String
+
+        attr_accessor status_code: Integer
+
+        attr_accessor url: String
+
+        attr_reader email: String?
+
+        def email=: (String) -> String
+
+        attr_reader payment_date: String?
+
+        def payment_date=: (String) -> String
+
+        attr_reader payment_date_iso: String?
+
+        def payment_date_iso=: (String) -> String
+
+        attr_reader phone: String?
+
+        def phone=: (String) -> String
+
+        def initialize: (
+          amount: Float,
+          created_date: String,
+          created_date_iso: String,
+          culture_name: String,
+          currency: String,
+          currency_code: Integer,
+          description: String,
+          id: String,
+          internal_id: Integer,
+          number: Integer,
+          require_confirmation: bool,
+          status: String,
+          status_code: Integer,
+          url: String,
+          ?email: String,
+          ?payment_date: String,
+          ?payment_date_iso: String,
+          ?phone: String
+        ) -> void
+
+        def to_hash: -> {
+          amount: Float,
+          created_date: String,
+          created_date_iso: String,
+          culture_name: String,
+          currency: String,
+          currency_code: Integer,
+          description: String,
+          id: String,
+          internal_id: Integer,
+          number: Integer,
+          require_confirmation: bool,
+          status: String,
+          status_code: Integer,
+          url: String,
+          email: String,
+          payment_date: String,
+          payment_date_iso: String,
+          phone: String
+        }
+      end
+    end
+  end
+end
