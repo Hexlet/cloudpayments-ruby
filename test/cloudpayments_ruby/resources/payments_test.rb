@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class CloudpaymentsRuby::Test::Resources::PaymentsTest < CloudpaymentsRuby::Test::ResourceTest
   def test_auth_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @cloudpayments.payments.auth(
@@ -26,7 +26,7 @@ class CloudpaymentsRuby::Test::Resources::PaymentsTest < CloudpaymentsRuby::Test
   end
 
   def test_charge_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @cloudpayments.payments.charge(
@@ -48,7 +48,7 @@ class CloudpaymentsRuby::Test::Resources::PaymentsTest < CloudpaymentsRuby::Test
   end
 
   def test_confirm_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @cloudpayments.payments.confirm(amount: 0, transaction_id: 0)
 
@@ -65,7 +65,7 @@ class CloudpaymentsRuby::Test::Resources::PaymentsTest < CloudpaymentsRuby::Test
   end
 
   def test_post3ds_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @cloudpayments.payments.post3ds(pa_res: "PaRes", transaction_id: 0)
 
@@ -83,7 +83,7 @@ class CloudpaymentsRuby::Test::Resources::PaymentsTest < CloudpaymentsRuby::Test
   end
 
   def test_refund_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @cloudpayments.payments.refund(amount: 0, transaction_id: 0)
 
@@ -101,7 +101,7 @@ class CloudpaymentsRuby::Test::Resources::PaymentsTest < CloudpaymentsRuby::Test
   end
 
   def test_void_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @cloudpayments.payments.void(transaction_id: 0)
 
