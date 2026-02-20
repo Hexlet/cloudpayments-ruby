@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class CloudpaymentsRuby::Test::Resources::OrdersTest < CloudpaymentsRuby::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @cloudpayments.orders.create(amount: 0, description: "Description")
 
@@ -22,7 +22,7 @@ class CloudpaymentsRuby::Test::Resources::OrdersTest < CloudpaymentsRuby::Test::
   end
 
   def test_cancel_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @cloudpayments.orders.cancel(id: "Id")
 
