@@ -157,7 +157,7 @@ module CloudpaymentsRuby
           in Hash | nil => coerced
             coerced
           else
-            message = "Expected a #{Hash} or #{CloudpaymentsRuby::Internal::Type::BaseModel}, got #{data.inspect}"
+            message = "Expected a #{Hash} or #{CloudpaymentsRuby::Internal::Type::BaseModel}, got #{input.inspect}"
             raise ArgumentError.new(message)
           end
         end
