@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class CloudpaymentsRuby::Test::Resources::Payments::TokensTest < CloudpaymentsRuby::Test::ResourceTest
   def test_auth_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @cloudpayments.payments.tokens.auth(
@@ -28,7 +28,7 @@ class CloudpaymentsRuby::Test::Resources::Payments::TokensTest < CloudpaymentsRu
   end
 
   def test_charge_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @cloudpayments.payments.tokens.charge(

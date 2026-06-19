@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class CloudpaymentsRuby::Test::Resources::SubscriptionsTest < CloudpaymentsRuby::Test::ResourceTest
   def test_create_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response =
       @cloudpayments.subscriptions.create(
@@ -33,7 +33,7 @@ class CloudpaymentsRuby::Test::Resources::SubscriptionsTest < CloudpaymentsRuby:
   end
 
   def test_update_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @cloudpayments.subscriptions.update(id: "Id")
 
@@ -51,7 +51,7 @@ class CloudpaymentsRuby::Test::Resources::SubscriptionsTest < CloudpaymentsRuby:
   end
 
   def test_cancel_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @cloudpayments.subscriptions.cancel(id: "Id")
 
@@ -68,7 +68,7 @@ class CloudpaymentsRuby::Test::Resources::SubscriptionsTest < CloudpaymentsRuby:
   end
 
   def test_find_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @cloudpayments.subscriptions.find(account_id: "AccountId")
 
@@ -86,7 +86,7 @@ class CloudpaymentsRuby::Test::Resources::SubscriptionsTest < CloudpaymentsRuby:
   end
 
   def test_get_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @cloudpayments.subscriptions.get(id: "Id")
 
