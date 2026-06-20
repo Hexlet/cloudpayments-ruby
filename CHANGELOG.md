@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.3 (2026-06-20)
+
+Full Changelog: [v0.4.2...v0.4.3](https://github.com/Hexlet/cloudpayments-ruby/compare/v0.4.2...v0.4.3)
+
+### Chores
+
+* **internal:** codegen related update ([95b35be](https://github.com/Hexlet/cloudpayments-ruby/commit/95b35be274a2f95c73491e15bfbf755c198dc885))
+
 ## 0.4.2 (2026-04-09)
 
 Full Changelog: [v0.4.1...v0.4.2](https://github.com/Hexlet/cloudpayments-ruby/compare/v0.4.1...v0.4.2)
