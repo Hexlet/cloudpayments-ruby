@@ -114,7 +114,7 @@ module CloudpaymentsRuby
       sig { returns(T.nilable(Integer)) }
       attr_reader :max_periods
 
-      sig { params(max_periods: Integer).void }
+      sig { params(max_periods: T.nilable(Integer)).void }
       attr_writer :max_periods
 
       # Дата следующей транзакции
@@ -162,7 +162,7 @@ module CloudpaymentsRuby
           failover_scheme_id: String,
           last_transaction_date: String,
           last_transaction_date_iso: String,
-          max_periods: Integer,
+          max_periods: T.nilable(Integer),
           next_transaction_date: String,
           next_transaction_date_iso: String,
           receipt: T.anything
@@ -246,7 +246,7 @@ module CloudpaymentsRuby
             failover_scheme_id: String,
             last_transaction_date: String,
             last_transaction_date_iso: String,
-            max_periods: Integer,
+            max_periods: T.nilable(Integer),
             next_transaction_date: String,
             next_transaction_date_iso: String,
             receipt: T.anything
