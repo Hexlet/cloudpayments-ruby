@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.3](https://github.com/Hexlet/cloudpayments-ruby/compare/v0.4.2...v0.4.3) (2026-06-26)
+
+
+### Bug Fixes
+
+* allow null for MaxPeriods in subscription response model ([bcddb1a](https://github.com/Hexlet/cloudpayments-ruby/commit/bcddb1a49762fb4801838b0bf31f052c01824ba4))
+* nullable MaxPeriods response + migrate off Stainless build ([b7feae4](https://github.com/Hexlet/cloudpayments-ruby/commit/b7feae419c4949833161ef2debafe7f851e6789a))
+
 ## 0.4.2 (2026-04-09)
 
 Full Changelog: [v0.4.1...v0.4.2](https://github.com/Hexlet/cloudpayments-ruby/compare/v0.4.1...v0.4.2)
