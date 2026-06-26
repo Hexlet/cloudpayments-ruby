@@ -23,7 +23,7 @@ module CloudpaymentsRuby
         failover_scheme_id: String,
         last_transaction_date: String,
         last_transaction_date_iso: String,
-        max_periods: Integer,
+        max_periods: Integer?,
         next_transaction_date: String,
         next_transaction_date_iso: String,
         receipt: top
@@ -84,7 +84,7 @@ module CloudpaymentsRuby
 
       attr_reader max_periods: Integer?
 
-      def max_periods=: (Integer) -> Integer
+      def max_periods=: (Integer?) -> Integer?
 
       attr_reader next_transaction_date: String?
 
@@ -120,7 +120,7 @@ module CloudpaymentsRuby
         ?failover_scheme_id: String,
         ?last_transaction_date: String,
         ?last_transaction_date_iso: String,
-        ?max_periods: Integer,
+        ?max_periods: Integer?,
         ?next_transaction_date: String,
         ?next_transaction_date_iso: String,
         ?receipt: top
@@ -148,7 +148,7 @@ module CloudpaymentsRuby
         failover_scheme_id: String,
         last_transaction_date: String,
         last_transaction_date_iso: String,
-        max_periods: Integer,
+        max_periods: Integer?,
         next_transaction_date: String,
         next_transaction_date_iso: String,
         receipt: top

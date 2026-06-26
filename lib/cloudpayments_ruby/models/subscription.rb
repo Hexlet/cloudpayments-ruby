@@ -135,7 +135,7 @@ module CloudpaymentsRuby
       #   Максимальное количество платежей
       #
       #   @return [Integer, nil]
-      optional :max_periods, Integer, api_name: :MaxPeriods
+      optional :max_periods, Integer, api_name: :MaxPeriods, nil?: true
 
       # @!attribute next_transaction_date
       #   Дата следующей транзакции
@@ -200,7 +200,7 @@ module CloudpaymentsRuby
       #
       #   @param last_transaction_date_iso [String] Дата последней транзакции ISO
       #
-      #   @param max_periods [Integer] Максимальное количество платежей
+      #   @param max_periods [Integer, nil] Максимальное количество платежей
       #
       #   @param next_transaction_date [String] Дата следующей транзакции
       #
